@@ -1,0 +1,22 @@
+create table categoria (
+	id_categoria integer primary key autoincrement,
+	nome text
+);
+
+insert into categoria (nome) values ('papelaria'), ('artigos esportivos'), 
+('brinquedos'), ('moda'), ('eletrônicos');
+
+create table usuario (
+	id_usuario integer primary key autoincrement,
+	nome text not null,
+	telefone TEXT not null,
+	endereço text varchar(30) not null,
+	cpf integer VARCHAR(11) not null,
+	email text not null,
+	nascimento_data date not null
+);
+
+insert into usuario (nome) values ('Gabriel'), ('Cauã'), 
+('Rebeca');
+
+insert into usuario (telefone) values ('(24)988596432')
