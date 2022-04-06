@@ -1,1 +1,1 @@
-# Residencia_de_Software_Serratec
+# Residencia de Software Serratec
