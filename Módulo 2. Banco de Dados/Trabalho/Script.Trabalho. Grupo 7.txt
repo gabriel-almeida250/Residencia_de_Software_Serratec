@@ -272,7 +272,7 @@ where nome like 'b%';
 select p.nome as nome_produto, 
 	   c.nome as nome_categoria
 from categoria c, produto p -- não tem problema declarar depois o apelido da tabela 
-where c.codigo_categoria = p.categoria -- conexão de duas tabelas a partir da referência das chaves
+where c.codigo_categoria = p.categoria; -- conexão de duas tabelas a partir da referência das chaves
 -- exemplo 2 (colocando uma limitação para saber quantos produtos tem em uma categoria isolada)
 select p.nome as nome_produto, 
 	   c.nome as nome_categoria
@@ -286,3 +286,50 @@ select p.nome as nome_produto,
 from categoria c, produto p
 where c.codigo_categoria = p.categoria
 and c.nome =='Eletrônicos';
+-- exemplo 4 (usando inner join)
+select produto.nome as nome_produto,
+       categoria.nome as nome_categoria
+from categoria 
+inner join produto 
+on produto.categoria = categoria.codigo_categoria
+and categoria.nome =='Papelaria';
+------------------------------------------------------------
+------------------------------------------------------------
+select p.nome , p2.data_pedido , lp.quantidade 
+from lista_produtos lp
+inner join produto p on p.id_produto = lp.id_produto 
+inner join pedido p2 on p2.id_pedido = lp.id_pedido;
+-------------------------------------------
+-------------- Nota Fiscal ----------------
+select u2.nome as Vendedor,
+	   u.nome as Comprador,
+	   prod.nome as Produto, 
+	   lc.quantidade as Quantidade,
+	   prod.valor as Preço,
+	   (lc.quantidade*prod.valor) as Total,
+	   ped.data_pedido as Data_Pedidos 
+from usuario u, 
+     usuario u2, 
+	 pedido ped, 
+     produto prod, 
+     lista_compras lc --essa última é a tabela associativa
+where lc.produto = prod.codigo_produto -- conexão 1
+and lc.pedido = ped.codigo_pedido  --conexão 2
+and u.codigo_usuario = ped.usuario_comprador --conexão 3
+and u2.codigo_usuario = prod.codigo_usuario_vendedor -- conexão 4
+and u.nome =='Vinicius Pires';
+-------------------------------------------
+-------------- Nota Fiscal ----------------
+select u2.nome as Vendedor,
+	   u.nome as Comprador,
+	   prod.nome as Produto, 
+	   lc.quantidade as Quantidade,
+	   prod.valor as Preço,
+	   (lc.quantidade*prod.valor) as Total,
+	   ped.data_pedido as Data_Pedidos
+from lista_compras lc
+inner join usuario u on lc.produto = prod.codigo_produto -- conexão 1
+inner join usuario u2 on lc.pedido = ped.codigo_pedido  --conexão 2
+inner join pedido ped on u.codigo_usuario = ped.usuario_comprador --conexão 3
+inner join produto prod on u2.codigo_usuario = prod.codigo_usuario_vendedor -- conexão 4
+where u.nome =='Gabriel Almeida';
