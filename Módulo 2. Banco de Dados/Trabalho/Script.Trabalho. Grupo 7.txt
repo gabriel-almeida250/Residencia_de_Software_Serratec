@@ -293,12 +293,6 @@ from categoria
 inner join produto 
 on produto.categoria = categoria.codigo_categoria
 and categoria.nome =='Papelaria';
-------------------------------------------------------------
-------------------------------------------------------------
-select p.nome , p2.data_pedido , lp.quantidade 
-from lista_produtos lp
-inner join produto p on p.id_produto = lp.id_produto 
-inner join pedido p2 on p2.id_pedido = lp.id_pedido;
 -------------------------------------------
 -------------- Nota Fiscal ----------------
 select u2.nome as Vendedor,
