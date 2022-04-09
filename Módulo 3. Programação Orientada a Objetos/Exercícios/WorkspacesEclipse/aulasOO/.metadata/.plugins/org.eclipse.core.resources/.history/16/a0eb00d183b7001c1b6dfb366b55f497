@@ -1,0 +1,14 @@
+package org.serratec;
+
+public class Conversao {
+
+	public static void main(String[] args) {
+		int a =100;
+		float b;
+		int d;
+		double c = 4.25;
+		b = a;
+		d = int(c); 
+	}
+
+}

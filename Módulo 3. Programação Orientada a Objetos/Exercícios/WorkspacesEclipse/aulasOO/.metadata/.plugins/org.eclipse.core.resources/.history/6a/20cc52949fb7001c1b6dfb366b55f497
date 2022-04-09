@@ -1,0 +1,8 @@
+package org.serratec.model;
+
+public class Exemplo2Printf {
+	public static void main(String[] args) {
+		System.out.printf("Hello World");
+	}
+	
+}

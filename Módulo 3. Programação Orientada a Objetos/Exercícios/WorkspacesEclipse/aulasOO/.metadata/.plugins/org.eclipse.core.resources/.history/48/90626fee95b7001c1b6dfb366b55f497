@@ -1,0 +1,20 @@
+package org.serratec.model;
+
+public class TestarAluno {
+
+	public static void main(String[] args) {
+		//Criação de uma instância de um objeto
+	Aluno aluno = new Aluno();
+	Aluno aluno2 = aluno;
+	
+	System.out.println(aluno);
+	System.out.println(aluno2);
+	
+	if (aluno == aluno2) {
+		System.out.println("Referências iguais!");
+	}else {
+		System.out.println("Diferentes");
+	}
+	}
+
+}
