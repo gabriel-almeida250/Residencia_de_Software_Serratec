@@ -1,0 +1,10 @@
+package org.serratec;
+
+public class Exemplo3Repeticao {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
