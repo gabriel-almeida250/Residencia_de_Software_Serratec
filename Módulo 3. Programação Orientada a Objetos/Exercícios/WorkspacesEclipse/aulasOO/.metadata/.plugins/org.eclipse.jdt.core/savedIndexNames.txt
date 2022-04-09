@@ -1,0 +1,1 @@
+INDEX VERSION 1.131+C:\Users\RESIDENCIA\OneDrive\Documentos\Residência em TI\Módulo 3. Programação Orientada a Objetos\Exercícios\aulasOO\.metadata\.plugins\org.eclipse.jdt.core
