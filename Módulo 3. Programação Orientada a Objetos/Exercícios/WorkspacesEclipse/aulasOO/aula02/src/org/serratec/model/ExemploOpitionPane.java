@@ -13,5 +13,4 @@ public class ExemploOpitionPane {
 		
 		JOptionPane.showInternalMessageDialog(null, (nota1+nota2)/2);
 	}
-
 }
