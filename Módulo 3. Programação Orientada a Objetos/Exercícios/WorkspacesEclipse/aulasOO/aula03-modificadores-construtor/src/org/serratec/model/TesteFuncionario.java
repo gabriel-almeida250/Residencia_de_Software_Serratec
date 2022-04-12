@@ -13,3 +13,7 @@ public class TesteFuncionario {
     }
 
 }
+/*    public static void main(String[] args) {
+		Funcionario f1 = new Funcionario("Fulano", 2000);
+		System.out.println(f1.getNome());*/
+

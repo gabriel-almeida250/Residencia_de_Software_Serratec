@@ -6,7 +6,6 @@ public class Produto2 {
 	private int quantidade;
 	
 	public Produto2(String nome, double valor, int quantidade) {
-		super();
 		this.nome = nome;
 		this.valor = valor;
 		this.quantidade = quantidade;
@@ -41,9 +40,8 @@ public class Produto2 {
 		return total;
 	}
 	public double calcularIcms() {
-		double imcs;
-		imcs = totalProduto() * 0.12;
-		return imcs;
+		double icms;
+		icms = totalProduto() * 0.12;
+		return icms;
 	}
-	
 }
