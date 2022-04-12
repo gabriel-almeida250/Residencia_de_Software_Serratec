@@ -5,14 +5,7 @@ public class Produto {
 	private String descricao;
 	private double valor;
 	
-	//Sobrecarga de construtores
-		//Overload 
-		/*public Produto() {
-			System.out.println("Construtor vazio !");
-		}
-	*/
 	
-	//Construtor cheio 
 	public Produto(int codigo, String descricao, int valor) {
 		this.descricao = descricao;
 		this.codigo = codigo;
