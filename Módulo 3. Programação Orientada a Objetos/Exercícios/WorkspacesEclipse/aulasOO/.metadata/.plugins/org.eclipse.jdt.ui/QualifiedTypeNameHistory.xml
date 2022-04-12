@@ -2,4 +2,6 @@
 <qualifiedTypeNameHistroy>
     <fullyQualifiedTypeName name="java.security.PublicKey"/>
     <fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
+    <fullyQualifiedTypeName name="java.lang.VerifyError"/>
+    <fullyQualifiedTypeName name="java.util.Scanner"/>
 </qualifiedTypeNameHistroy>

@@ -10,14 +10,13 @@ public class ExemploDezPorCento {
 		String email = JOptionPane.showInputDialog("Digite seu email: ");
 		String salario = JOptionPane.showInputDialog("Digite seu salário ");
 		
-		Double salario_nome =  Double.parseDouble(salario);
+		int salario_nome =  Integer.parseInt(salario);
 
 		double salarioPorCento = salario_nome*0.10;
 		double resultado = salario_nome+salarioPorCento;
 		
-		JOptionPane.showInternalMessageDialog(null, (nome));
-		JOptionPane.showInternalMessageDialog(null, (telefone));
-		JOptionPane.showInternalMessageDialog(null, (salario));
-		JOptionPane.showInternalMessageDialog(null, (resultado));
+		
+		JOptionPane.showInternalMessageDialog(null, String.format("%s\n%s\n%s\n%.2f",nome,telefone,email,resultado));
+		
 	}
 }
