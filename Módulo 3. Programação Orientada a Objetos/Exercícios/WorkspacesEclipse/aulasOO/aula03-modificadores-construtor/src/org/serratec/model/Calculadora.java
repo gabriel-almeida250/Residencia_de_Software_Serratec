@@ -34,7 +34,7 @@ public class Calculadora {
 
 	public double calculadoraSubtrair() {
 		double subtrair;
-		subtrair = n1 + n2;
+		subtrair = n1 - n2;
 		return subtrair;
 	}
 
@@ -46,7 +46,7 @@ public class Calculadora {
 
 	public double calculadoraDivisao() {
 		double div;
-		div = n1 * n2;
+		div = n1 / n2;
 		return div;
 	}
 }

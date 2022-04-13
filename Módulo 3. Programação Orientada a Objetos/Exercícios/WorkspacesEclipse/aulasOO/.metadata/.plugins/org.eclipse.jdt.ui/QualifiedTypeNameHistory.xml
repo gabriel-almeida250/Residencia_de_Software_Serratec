@@ -5,4 +5,9 @@
     <fullyQualifiedTypeName name="org.serratec.model.Fornecedor"/>
     <fullyQualifiedTypeName name="java.util.Scanner"/>
     <fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
+    <fullyQualifiedTypeName name="br.com.senai.model.Pedido"/>
+    <fullyQualifiedTypeName name="java.time.LocalDate"/>
+    <fullyQualifiedTypeName name="br.com.senai.model.Caminhao"/>
+    <fullyQualifiedTypeName name="br.com.senai.model.Anestesista"/>
+    <fullyQualifiedTypeName name="br.com.senai.model.Medico"/>
 </qualifiedTypeNameHistroy>
