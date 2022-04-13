@@ -10,4 +10,7 @@
     <fullyQualifiedTypeName name="br.com.senai.model.Caminhao"/>
     <fullyQualifiedTypeName name="br.com.senai.model.Anestesista"/>
     <fullyQualifiedTypeName name="br.com.senai.model.Medico"/>
+    <fullyQualifiedTypeName name="br.com.senai.model.PessoaFisica"/>
+    <fullyQualifiedTypeName name="br.com.senai.model.GerenteExercicio"/>
+    <fullyQualifiedTypeName name="br.com.senai.model.AssistenteExercicio"/>
 </qualifiedTypeNameHistroy>

@@ -13,7 +13,6 @@ public class Caminhao extends Veiculo {
 	
 	//Sobreescrita de método
 	//Overrinding
-	
 	@Override
 	public void adicionarValorIPVA(double valor) {
 		valorIPVA += valor * 2;

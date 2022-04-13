@@ -8,6 +8,6 @@ public class TestarMedico {
 		
 	
 		System.out.println(anestesista);
-		System.out.println(medico.toString());
+		System.out.println(medico);
 	}
 }

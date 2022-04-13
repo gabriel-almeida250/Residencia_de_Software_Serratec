@@ -33,5 +33,4 @@ public class Veiculo {
 	public void adicionarValorIPVA(double valor) {
 		valorIPVA += valor;
 	}
-
 }
