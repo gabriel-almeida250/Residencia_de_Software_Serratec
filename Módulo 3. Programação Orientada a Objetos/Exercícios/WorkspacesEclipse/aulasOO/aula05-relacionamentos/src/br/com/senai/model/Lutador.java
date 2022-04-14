@@ -5,6 +5,7 @@ public class Lutador {
 	private CategoriaLuta categoriaLuta;
 	private int idade;
 	private double peso;
+	
 	public Lutador(String nomeLutador, CategoriaLuta categoriaLuta, int idade, double peso) {
 		super();
 		this.nomeLutador = nomeLutador;
