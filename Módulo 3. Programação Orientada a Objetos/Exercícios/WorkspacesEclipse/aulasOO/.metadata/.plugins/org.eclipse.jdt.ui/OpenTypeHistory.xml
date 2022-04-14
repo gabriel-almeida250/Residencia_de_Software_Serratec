@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <typeInfoHistroy>
-    <typeInfo handle="=aula04-heranca/src&lt;br.com.senai.model{Veiculo.java[Veiculo" modifiers="1" timestamp="1649803170147"/>
+    <typeInfo handle="=aula04-heranca/src&lt;br.com.senai.model{Veiculo.java[Veiculo" modifiers="1" timestamp="1649876848299"/>
     <typeInfo handle="=aula04-heranca/src&lt;br.com.senai.model{Medico.java[Medico" modifiers="1" timestamp="1649806864933"/>
     <typeInfo handle="=aula04-heranca/src&lt;br.com.senai.model{ImpostoDeRenda.java[ImpostoDeRenda" modifiers="1" timestamp="1649865418297"/>
-    <typeInfo handle="=aula04-heranca/src&lt;br.com.senai.model{FuncionarioExercicio.java[FuncionarioExercicio" modifiers="1" timestamp="1649869577804"/>
+    <typeInfo handle="=aula05-relacionamentos/src&lt;br.com.senai.model{Plano.java[Plano" modifiers="1" timestamp="1649884485552"/>
+    <typeInfo handle="=aula05-relacionamentos/src&lt;br.com.senai.model{Medico.java[Medico" modifiers="1" timestamp="1649885790430"/>
 </typeInfoHistroy>
