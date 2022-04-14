@@ -18,4 +18,7 @@
     <fullyQualifiedTypeName name="br.com.senai.model.Pessoa"/>
     <fullyQualifiedTypeName name="br.com.senai.model.Atleta"/>
     <fullyQualifiedTypeName name="br.com.senai.model.Time"/>
+    <fullyQualifiedTypeName name="br.com.senai.model.Contato"/>
+    <fullyQualifiedTypeName name="br.com.senai.model.Cidade"/>
+    <fullyQualifiedTypeName name="br.com.senai.model.Luta"/>
 </qualifiedTypeNameHistroy>

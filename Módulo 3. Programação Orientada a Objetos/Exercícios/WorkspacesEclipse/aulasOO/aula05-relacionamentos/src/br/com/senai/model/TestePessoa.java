@@ -15,6 +15,5 @@ public class TestePessoa {
         contato.mostrarTelefones(telefones1);
 
         System.out.println(contato);
-        contato.listaContato();
     }
 }
