@@ -1,0 +1,118 @@
+package curso_em_video;
+
+public class ContaBanco {
+
+	// Atributos
+	private int numConta;
+	private String tipo;
+	private String donoConta;
+	private double saldo;
+	private String status;
+
+	
+	public void estadoAtual() {
+		System.out.println("=========================");
+		System.out.println("Conta: " + getNumConta());
+		System.out.println("Tipo: " + getTipo());
+		System.out.println("Dono: " + getDonoConta());
+		System.out.println("Saldo: " + getSaldo());
+		System.out.println("Status:" + getStatus());
+		System.out.println("=========================");
+		
+	}
+	
+	
+	
+	
+	// Método Construtor
+	public ContaBanco(int numConta, String tipo, String donoConta, double saldo, String status) {
+
+		this.numConta = numConta;
+		this.tipo = tipo;
+		this.donoConta = donoConta;
+		this.saldo = saldo;
+		this.status = status;
+
+	}
+
+	// Métodos Especiais
+	public int getNumConta() {
+		return numConta;
+	}
+
+	public void setNumConta(int numConta) {
+		this.numConta = numConta;
+	}
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
+	public String getDonoConta() {
+		return donoConta;
+	}
+
+	public void setDonoConta(String donoConta) {
+		this.donoConta = donoConta;
+	}
+
+	public double getSaldo() {
+		return saldo;
+	}
+
+	public void setSaldo(double saldo) {
+		this.saldo = saldo;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	// Métodos personalizados
+	public void abrirConta(String tipo, String status) {
+		setTipo(tipo);
+		setStatus("V");
+		if (tipo == "CC") {
+			setSaldo(50);
+		} else if (tipo == "CP") {
+			setSaldo(150);
+		}
+		System.out.println("Conta aberta com sucesso");
+	}
+
+	public void fecharConta(int saldo) {
+		if ((getSaldo() < (0))) {
+			System.out.println("Você está em débito");
+		} else if ((getSaldo() < (0))) {
+			System.out.println("Você deve sacar o seu dinheiro");
+		} else {
+			setStatus("F");
+			System.out.println("Conta fechada co sucesso");
+		}
+/////////////////////////
+package curso_em_video;
+
+public class TesteContaBanco {
+    public static void main(String[] args) {
+        ContaBanco p1 = new ContaBanco(1, "CC", "Vinícius");
+        ContaBanco p2 = new ContaBanco(2, "CP", "Afonso");
+        ContaBanco p3 = new ContaBanco(3, "CP", "Gabriel");
+
+        p3.estadoAtual();
+        p3.abrirConta("CP", "V");
+        p3.estadoAtual();
+        p3.depositar(500);
+        p3.estadoAtual();
+
+
+
+    }
+}
