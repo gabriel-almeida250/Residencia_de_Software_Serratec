@@ -9,7 +9,6 @@ public class Anestesista extends Medico {
 	}
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
 		return super.toString()+"\nTipo Anestesia: " + tipoAnestesia;
 	}
 

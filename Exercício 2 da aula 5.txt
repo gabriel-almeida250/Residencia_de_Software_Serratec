@@ -1,0 +1,35 @@
+Criar uma classe com o nome CategoriaLuta com os seguintes atributos:
+codigo
+nomeCategoria
+
+Criar uma classe com o nome Lutador com os seguintes atributos:
+nome
+categoriaLuta
+idade
+peso
+
+Criar uma classe com o nome Luta com os seguintes atributos:
+desafiante
+desafiado
+rounds
+confirmado
+Nesta classe deverá ser criado um método com o nome confirmarLuta com retorno do tipo boolean
+onde serão feitas as seguintes críticas:
+Comparar o desafiante e desafiado se são diferentes e a categoria de luta se é a mesma.
+caso afirmativo deverá retornar true.
+
+
+Inserir nas classes:
+Construtor, getter, setter e toString
+
+
+Criar uma classe com o main para gerar as instâncias abaixo:
+Duas instâncias de categoria
+1 - Peso Médio
+2- Peso Pesado
+
+Três instâncias de Lutador
+Uma instância de Luta
+
+Fazer a confirmação da luta fazendo a chamada para o método confirmarLuta e em caso afirmativo
+o atributo confirmado deverá receber true e exibir na tela a mensagem Luta confirmada.
