@@ -13,6 +13,7 @@ public class TesteLivro {
 		op2.venderLivro();
 		op1.emprestarLivro();
 		
-		System.out.println(op2.getValorOperacao());
+		System.out.println(op1);
+		System.out.println(op2);
 	}
 }

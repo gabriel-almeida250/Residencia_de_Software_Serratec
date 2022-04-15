@@ -12,7 +12,7 @@ public class Livro {
 	}
 	@Override
 	public String toString() {
-		return "Livro [autor=" + autor + ", titulo=" + titulo + ", valor=" + valor + "]";
+		return "\nLivro do autor: " + autor + "\nTitulo: " + titulo + "\nValor: " + valor;
 	}
 	public String getAutor() {
 		return autor;

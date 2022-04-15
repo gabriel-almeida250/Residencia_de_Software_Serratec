@@ -15,7 +15,7 @@ public class Operacao implements Livraria {
 
 	@Override
 	public String toString() {
-		return "Operacao [tipo=" + tipo + ", valorOperacao=" + valorOperacao + "]";
+		return "\nTipo da Operação: " + tipo + String.format("\nValor Operacao: %.2f", valorOperacao) + "\nLivro: " + livro ;
 	}
 
 	public String getTipo() {

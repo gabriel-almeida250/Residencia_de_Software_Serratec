@@ -1,4 +1,4 @@
-package br.com.senai.model;
+package exercicios;
 
 public class Endereco {
     private String rua;

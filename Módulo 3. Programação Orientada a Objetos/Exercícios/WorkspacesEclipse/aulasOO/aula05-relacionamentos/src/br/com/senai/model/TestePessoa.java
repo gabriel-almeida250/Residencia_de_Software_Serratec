@@ -1,5 +1,11 @@
 package br.com.senai.model;
 
+import exercicios.Cidade;
+import exercicios.Contato;
+import exercicios.Endereco;
+import exercicios.Estado;
+import exercicios.Telefone;
+
 public class TestePessoa {
 
     public static void main(String[] args) {

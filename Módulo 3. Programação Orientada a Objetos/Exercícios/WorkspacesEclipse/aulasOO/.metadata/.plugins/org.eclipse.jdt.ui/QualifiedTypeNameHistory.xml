@@ -26,4 +26,6 @@
     <fullyQualifiedTypeName name="br.com.senai.model.TotalTributos"/>
     <fullyQualifiedTypeName name="exercicios.Livro"/>
     <fullyQualifiedTypeName name="exercicios.Operacao"/>
+    <fullyQualifiedTypeName name="exercicios.Pais"/>
+    <fullyQualifiedTypeName name="exercicios.Atleta"/>
 </qualifiedTypeNameHistroy>

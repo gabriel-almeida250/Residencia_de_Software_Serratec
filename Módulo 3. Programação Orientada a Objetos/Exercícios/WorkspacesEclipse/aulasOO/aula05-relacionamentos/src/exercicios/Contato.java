@@ -1,4 +1,4 @@
-package br.com.senai.model;
+package exercicios;
 
 import java.util.Arrays;
 
