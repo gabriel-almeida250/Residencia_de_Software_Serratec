@@ -12,7 +12,7 @@ public class TestarAtleta {
 		System.out.println(atleta);
 		System.out.println(atleta2);
 		System.out.println(atleta3);
-		System.out.println("\nTotal de Participantes:   " + Atleta.getTotalParticipantes());
+		System.out.println("\nTotal de Participantes: " + Atleta.getTotalParticipantes());
 	}
 
 }
