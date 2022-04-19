@@ -16,7 +16,7 @@ public class Atleta implements Olimpiadas {
 	}
 	@Override
 	public String toString() {
-		return "\nAtleta: " + nome + "\nPeso: " + peso + "\nPais: " + pais + "\nModalidade: " + modalidade + "\nStatus: " + verificarSituacao();
+		return "\nAtleta: " + nome + "\nPeso: " + peso + "\nPais: " + pais + "\nModalidade: " + modalidade;
 	}
 	public Pais getPais() {
 		return pais;
@@ -49,12 +49,12 @@ public class Atleta implements Olimpiadas {
 	public String verificarSituacao() {
 		if (peso > 60 && peso < 90) {
 			totalParticipantes ++;
-			return "Pode participar";
+			return "\nPode participar";
 		} else if (peso > 90 && peso <= 150) {
 			totalParticipantes ++;
-			return "Pode participar"; 
+			return "\nPode participar"; 
 		}else{
-			return "Não pode participar";
+			return "\nNão pode participar";
 		}
 	}
 }

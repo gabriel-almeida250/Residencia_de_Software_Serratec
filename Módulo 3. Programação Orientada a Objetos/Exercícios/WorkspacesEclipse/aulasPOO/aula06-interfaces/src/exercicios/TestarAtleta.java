@@ -9,10 +9,9 @@ public class TestarAtleta {
 		Atleta atleta2 = new Atleta("Siclano", 65, pais);
 		Atleta atleta3 = new Atleta("Beutrano", 1000, pais2);
 		
-		System.out.println(atleta);
-		System.out.println(atleta2);
-		System.out.println(atleta3);
+		System.out.println(atleta + atleta.verificarSituacao());
+		System.out.println(atleta2 + atleta2.verificarSituacao());
+		System.out.println(atleta3 + atleta3.verificarSituacao());
 		System.out.println("\nTotal de Participantes: " + Atleta.getTotalParticipantes());
 	}
-
 }
