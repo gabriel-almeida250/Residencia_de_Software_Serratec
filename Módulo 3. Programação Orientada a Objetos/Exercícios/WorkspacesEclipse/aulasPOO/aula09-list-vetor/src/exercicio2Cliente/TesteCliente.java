@@ -1,34 +1,35 @@
 package exercicio2Cliente;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class TesteCliente {
-	
-	public static void main(String[] args) {
-	Scanner sc = new Scanner(System.in);
-	Cliente cliente = new Cliente();
-	ArrayList<Cliente> listaCliente = new ArrayList<Cliente>();
-	 do {
-			System.out.println("Digite seu id:");
-			int id = sc.nextInt();
-			System.out.println("Digite seu nome: ");
-			String nome = sc.next();
-			System.out.println("Digite sua idade: ");
-			String idade = sc.next();
-			System.out.println("Digite seu telefone: ");
-			String telefone = sc.next();
-			cliente.setId(id);
-			cliente.setIdade(idade);
-			cliente.setNome(nome);
-			cliente.setTelefone(telefone);
-			listaCliente.add(new Cliente());
-	 }while(cliente.getId() > 0);
 
-	 
+    public static void main(String[] args) {
 
-	for (Cliente clientes : listaCliente) {
-		System.out.println(clientes);
-	}
-	}
+        ArrayList<Cliente> listaClientes = new ArrayList<Cliente>();
+
+        Scanner sc = new Scanner(System.in);
+        int id;
+        String nome;
+        String telefone;
+        int idade;
+        System.out.println("Digite o ID do cliente :");
+        id = sc.nextInt();
+        while (id >= 0) {
+            System.out.println("Digite o nome:");
+            nome = sc.next();
+            System.out.println("Digite a idade:");
+            idade = sc.nextInt();
+            System.out.println("Digite o telefone:");
+            telefone = sc.next();
+            Cliente cliente = new Cliente(id, nome, idade, telefone);
+            listaClientes.add(cliente);
+            System.out.println("Digite o ID do cliente :");
+            id = sc.nextInt();
+        }
+        System.out.println(listaClientes);
+        sc.close();
+    }
 }
