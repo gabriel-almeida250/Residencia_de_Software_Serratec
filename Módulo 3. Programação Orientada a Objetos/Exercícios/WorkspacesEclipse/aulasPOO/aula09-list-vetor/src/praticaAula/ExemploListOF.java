@@ -4,6 +4,7 @@ import java.util.List;
 
 public class ExemploListOF {
 
+	@SuppressWarnings("rawtypes")
 	public static void main(String[] args) {
 		List listaImutavel = List.of("TV 43", "Kindle", "Celular");
 		/* Restrições

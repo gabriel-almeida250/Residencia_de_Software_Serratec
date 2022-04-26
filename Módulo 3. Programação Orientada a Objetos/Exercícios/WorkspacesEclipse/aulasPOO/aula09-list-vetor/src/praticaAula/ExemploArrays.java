@@ -6,6 +6,7 @@ import java.util.List;
 
 public class ExemploArrays {
 
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public static void main(String[] args) {
 		List lista = Arrays.asList("Tv 43", "Celular", "Kindle");
 		//lista.add("Aparelho de Sol");

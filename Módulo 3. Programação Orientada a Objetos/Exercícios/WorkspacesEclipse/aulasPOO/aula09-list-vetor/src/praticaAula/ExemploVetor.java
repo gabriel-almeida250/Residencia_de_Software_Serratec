@@ -2,6 +2,7 @@ package praticaAula;
 
 import java.util.Iterator;
 
+@SuppressWarnings("unused")
 public class ExemploVetor {
 
 	public static void main(String[] args) {

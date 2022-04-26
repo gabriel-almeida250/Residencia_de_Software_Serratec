@@ -9,6 +9,7 @@ public class Pessoa {
 	
 	enum Escolaridade{
 		GRADUACAO('G'), MEDIO('M'), FUNDAMENTAL('F');
+		@SuppressWarnings("unused")
 		private char escolaridade;
 
 		private Escolaridade(char escolaridade) {

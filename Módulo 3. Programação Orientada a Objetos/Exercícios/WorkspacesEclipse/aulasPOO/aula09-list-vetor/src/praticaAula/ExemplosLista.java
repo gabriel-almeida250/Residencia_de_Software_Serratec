@@ -5,6 +5,7 @@ import java.util.List;
 
 public class ExemplosLista {
 
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public static void main(String[] args) {
 		List lista = new ArrayList<>();
 		lista.add("Celular");

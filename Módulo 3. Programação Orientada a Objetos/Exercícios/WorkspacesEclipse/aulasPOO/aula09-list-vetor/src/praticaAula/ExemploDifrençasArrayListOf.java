@@ -5,6 +5,7 @@ import java.util.List;
 
 public class ExemploDifrençasArrayListOf {
 
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public static void main(String[] args) {
 		String[] carros = {"Gol", "Fusca", "Fiesta"};
 		List listaCarros = Arrays.asList(carros);
