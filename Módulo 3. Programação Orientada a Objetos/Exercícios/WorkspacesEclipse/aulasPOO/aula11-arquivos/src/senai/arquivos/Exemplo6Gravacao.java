@@ -9,7 +9,7 @@ public class Exemplo6Gravacao {
 	public static void main(String[] args) {
 		BufferedWriter bw;
 		try {
-			bw = new BufferedWriter(new FileWriter("c:\\exemplos\\exercicio2.txt"));
+			bw = new BufferedWriter(new FileWriter("c:\\Exemplos\\exercicio2.txt"));
 			bw.append("Serratec-Java");
 			bw.append("Olá Mundo");
 			bw.close();
