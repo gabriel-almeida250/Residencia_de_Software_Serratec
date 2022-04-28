@@ -1,0 +1,3 @@
+2)Escreva um programa que leia um arquivo texto e retorne a quantidade de caracteres ele possui.
+Faça um programa que leia no console o nome, idade e altura de uma pessoa e escreva em um arquivo 
+Depois leia este arquivo e apresente os dados no console.
