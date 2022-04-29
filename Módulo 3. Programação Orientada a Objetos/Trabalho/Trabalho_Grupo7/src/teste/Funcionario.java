@@ -1,10 +1,12 @@
 package teste;
 
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.Set;
 
 import pacote_enum.TipoFuncionario;
-import pacote_exception.CpfException;
+import pacote_exception.CpfTamanhoException;
+import pacote_exception.IdadeException;
 import pacote_interface.Tributos;
 
 public class Funcionario extends Pessoa implements Tributos {
@@ -13,11 +15,14 @@ public class Funcionario extends Pessoa implements Tributos {
 	private Set<Dependente> dependentes;
 
 	public Funcionario(String nome, String cpf, LocalDate dataNascimento, TipoFuncionario cargo,
-					   TipoFuncionario salarioBruto, Set<Dependente> dependentes) throws CpfException {
+					   TipoFuncionario salarioBruto) throws CpfTamanhoException, IdadeException {
 		super(nome, cpf, dataNascimento);
+		Period periodo = dataNascimento.until(LocalDate.now());
+		if (periodo.getDays() <= 18) {
+			throw new IdadeException("Dependente tem que ter mais de 18 anos");
+		}
 		this.cargo = cargo;
 		this.salarioBruto = salarioBruto;
-		this.dependentes = dependentes;
 	}
 
 	@Override

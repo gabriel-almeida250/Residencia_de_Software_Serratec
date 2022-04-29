@@ -4,20 +4,20 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
-import pacote_exception.CpfException;
+import pacote_exception.CpfTamanhoException;
 
 public abstract class Pessoa {
 	protected String nome;
 	protected String cpf;
 	protected LocalDate dataNascimento;
 
-	public Pessoa(String nome, String cpf, LocalDate dataNascimento) throws CpfException {
+	public Pessoa(String nome, String cpf, LocalDate dataNascimento) throws CpfTamanhoException {
 		super();
 		this.nome = nome;
 		if (cpf.length() == 11) {
 			this.cpf = cpf;
 		} else {
-			throw new CpfException("Cpf deve conter 11 dígitos");
+			throw new CpfTamanhoException("Cpf deve conter 11 dígitos");
 		}
 		this.dataNascimento = dataNascimento;
 	}

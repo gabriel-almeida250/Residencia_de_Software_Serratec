@@ -4,9 +4,13 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
+
+import pacote_exception.CpfTamanhoException;
+import pacote_exception.IdadeException;
 
 public class TesteFuncionario {
 
@@ -19,15 +23,19 @@ public class TesteFuncionario {
 				String linha = sc.nextLine();
 				if (!linha.isEmpty()) {
 					String[] dadoslinha = linha.split(";");
-					String nome = 
+					String nome = dadoslinha[1], cpf = dadoslinha[2], dataNascimento = dadoslinha[3];
+					funcionario = new Funcionario(nome, cpf, LocalDate.parse(dataNascimento), null, null);
 				}
 				listaFuncionario.add(funcionario);
 			}
 		} catch (UnsupportedEncodingException e) {
-			
 			e.printStackTrace();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (CpfTamanhoException e) {
+			e.printStackTrace();
+		} catch (IdadeException e) {
+			System.out.println(e.getMessage());
 			e.printStackTrace();
 		}
 
