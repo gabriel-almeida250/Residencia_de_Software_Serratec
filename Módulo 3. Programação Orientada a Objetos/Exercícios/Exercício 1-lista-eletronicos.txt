@@ -1,0 +1,2 @@
+Criar uma lista da isntância ArrayList de Eletrônicos do tipo String
+vai imprimir em um foreach, imprimir pelo Method Reference
