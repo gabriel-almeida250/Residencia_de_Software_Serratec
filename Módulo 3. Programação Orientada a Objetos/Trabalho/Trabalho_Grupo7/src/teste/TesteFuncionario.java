@@ -24,6 +24,7 @@ public class TesteFuncionario {
 				if (!linha.isEmpty()) {
 					String[] dadoslinha = linha.split(";");
 					String nome = dadoslinha[1], cpf = dadoslinha[2], dataNascimento = dadoslinha[3];
+					Double 
 					funcionario = new Funcionario(nome, cpf, LocalDate.parse(dataNascimento), null, null);
 				}
 				listaFuncionario.add(funcionario);
