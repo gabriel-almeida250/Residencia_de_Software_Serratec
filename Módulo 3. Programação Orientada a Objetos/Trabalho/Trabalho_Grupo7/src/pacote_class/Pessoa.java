@@ -1,4 +1,4 @@
-package teste;
+package pacote_class;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -24,8 +24,8 @@ public abstract class Pessoa {
 
 	@Override
 	public String toString() {
-		DateTimeFormatter dft = DateTimeFormatter.ofPattern("YYYY/MM/dd");
-		return "\nNome: " + nome + ", Cpf: " + cpf + ", Data Nascimento: " + dataNascimento.format(dft);
+		DateTimeFormatter dft = DateTimeFormatter.ofPattern("YYYYMMdd");
+		return nome + ";" + cpf + ";" + dataNascimento.format(dft);
 	}
 
 	public String getNome() {
