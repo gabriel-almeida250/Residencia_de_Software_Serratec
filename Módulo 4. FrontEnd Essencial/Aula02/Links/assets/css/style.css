@@ -1,0 +1,28 @@
+body{
+    text-align: center;
+}
+img{
+    
+}
+a{
+    text-decoration: none;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 25px;
+    color: #ec1313;
+}
+
+a:visited{
+    color: #006aff;
+}
+
+a:link{
+    color: #ee00ff;
+}
+
+a:hover{
+    color: #2bff00;
+}
+
+a:active{
+    color: #fbff00;
+}

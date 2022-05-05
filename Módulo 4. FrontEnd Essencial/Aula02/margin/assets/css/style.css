@@ -1,0 +1,16 @@
+body{
+    text-align: center;
+}
+.margin{
+    border: 2px solid #fc0202;
+    margin: 100px 50px;
+    /*margin: 100px 50px 80px;*/
+    /*margin-top: 5em;
+    margin-bottom: 5em;
+    margin-left: 5rem;*/
+}
+
+.padding{
+    border: 2px solid #00c15a;
+    padding: 50px 20px 5px 80px;
+}
