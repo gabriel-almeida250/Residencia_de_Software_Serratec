@@ -1,2 +1,0 @@
-Botão pra abrir em nova aba:
- <button onclick=" window.open('http://google.com','_blank')">Google</button>
