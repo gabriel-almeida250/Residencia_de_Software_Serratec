@@ -1,0 +1,12 @@
+.container-top{
+    width: 80%;
+    height: 15rem;
+    background-color: aqua;
+    margin: auto;
+}
+.container-bottom{
+    width: 80%;
+    height: 20rem;
+    background-color: #3300ff;
+    margin: auto;  
+}   

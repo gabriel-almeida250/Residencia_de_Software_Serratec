@@ -1,0 +1,16 @@
+body{
+    text-align: center;
+}
+img{
+    width: 150px;
+}
+.right{
+    float: right;
+    /* width: 150px; */
+}
+.left{
+    float: left;
+    /* width: 150px; */
+}
+/* Perguntar para o professor pq não consigo setar o tamando de cada imagem, sem precisar
+chamar o img */
