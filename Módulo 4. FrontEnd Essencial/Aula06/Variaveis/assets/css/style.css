@@ -1,0 +1,9 @@
+body{
+    text-align: center;
+}
+div{
+    width: 30%;
+    height: 5rem;
+    margin: auto;
+    background-color: blueviolet;
+}
