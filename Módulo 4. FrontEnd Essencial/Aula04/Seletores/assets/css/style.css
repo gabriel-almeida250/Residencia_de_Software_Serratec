@@ -1,0 +1,22 @@
+.contianer > p{
+    color: #72e740;
+}
+.texto::first-line{
+    color: #1d62bd;
+}
+
+.texto::first-letter{
+    color: #ff00f7;
+}
+
+.texto{
+    font-size: 2rem;
+}
+
+input[name~="nome"]{
+    font-size: 2rem;
+}
+
+p[class*="texto"]{
+    color: #00ffe1;
+}
