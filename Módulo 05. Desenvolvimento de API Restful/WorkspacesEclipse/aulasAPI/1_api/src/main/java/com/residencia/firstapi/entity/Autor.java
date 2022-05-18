@@ -19,31 +19,19 @@ public class Autor {
     @Column(name = "autor_nome")
     private String autorNome;
 
-    @OneToMany(mappedBy = "autor")
-    @JsonIgnore
-    private List<Livro> livroList;
+	public Integer getAutorId() {
+		return autorId;
+	}
 
-    public Integer getAutorId() {
-        return autorId;
-    }
+	public void setAutorId(Integer autorId) {
+		this.autorId = autorId;
+	}
 
-    public void setAutorId(Integer autorId) {
-        this.autorId = autorId;
-    }
+	public String getAutorNome() {
+		return autorNome;
+	}
 
-    public String getAutorNome() {
-        return autorNome;
-    }
-
-    public void setAutorNome(String autorNome) {
-        this.autorNome = autorNome;
-    }
-
-    public List<Livro> getLivroList() {
-        return livroList;
-    }
-
-    public void setLivroList(List<Livro> livroList) {
-        this.livroList = livroList;
-    }
+	public void setAutorNome(String autorNome) {
+		this.autorNome = autorNome;
+	}
 }
