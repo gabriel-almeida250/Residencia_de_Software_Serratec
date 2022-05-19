@@ -30,12 +30,12 @@ public class EditoraController {
     }
 
     @PutMapping("/{id}")
-    public Editora update(@PathVariable Integer editoraId, @RequestBody Editora editora) {
-        return editoraService.update(editora, editoraId);
+    public Editora update(@PathVariable Integer Id, @RequestBody Editora editora) {
+        return editoraService.update(editora, Id);
     }
     
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Integer editoraId){
-        editoraService.delete(editoraId);
+    public void delete(@PathVariable Integer Id){
+        editoraService.delete(Id);
     }
 }

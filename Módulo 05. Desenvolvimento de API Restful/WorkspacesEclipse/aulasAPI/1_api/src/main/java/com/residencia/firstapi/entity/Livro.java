@@ -10,40 +10,45 @@ import javax.persistence.*;
 @Entity
 @Table(name = "livro")
 public class Livro {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "livro_id")
-    private Integer livroId;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "livro_id")
+	private Integer livroId;
 
-    @Column(name = "livro_nome")
-    private String livroNome;
+	@Column(name = "livro_nome")
+	private String livroNome;
 
-    @ManyToOne
-    @JoinColumn(name = "editora_id", referencedColumnName = "editora_id")
-    @JsonIgnore
-    private Editora editora;
+	@ManyToOne
+	@JoinColumn(name = "editora_id", referencedColumnName = "editora_id")
+	@JsonIgnore
+	private Editora editora;
 
-    public Integer getLivroId() {
-        return livroId;
-    }
+	@ManyToOne
+	@JoinColumn(name = "autor_id", referencedColumnName = "autor_id")
+	@JsonIgnore
+	private Autor autor;
 
-    public void setLivroId(Integer livroId) {
-        this.livroId = livroId;
-    }
+	public Integer getLivroId() {
+		return livroId;
+	}
 
-    public String getLivroNome() {
-        return livroNome;
-    }
+	public void setLivroId(Integer livroId) {
+		this.livroId = livroId;
+	}
 
-    public void setLivroNome(String livroNome) {
-        this.livroNome = livroNome;
-    }
+	public String getLivroNome() {
+		return livroNome;
+	}
 
-    public Editora getEditora() {
-        return editora;
-    }
+	public void setLivroNome(String livroNome) {
+		this.livroNome = livroNome;
+	}
 
-    public void setEditora(Editora editora) {
-        this.editora = editora;
-    }
+	public Editora getEditora() {
+		return editora;
+	}
+
+	public void setEditora(Editora editora) {
+		this.editora = editora;
+	}
 }
