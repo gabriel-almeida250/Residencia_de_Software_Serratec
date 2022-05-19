@@ -24,9 +24,9 @@ public class AutorController {
 		return autorService.findById(id);
 	}
 
-	@GetMapping("/nome/{nomeAutor}")
-	public Autor findByName(@PathVariable(value = "nomeAutor") String nome) {
-		return autorService.findByName(nome);
+	@GetMapping("nome/{autorNome}")
+	public Autor findByNome(@PathVariable(value = "autorNome") String nome) {
+		return autorService.findByNome(nome);
 	}
 
 	@PostMapping
@@ -34,9 +34,9 @@ public class AutorController {
 		return autorService.save(autor);
 	}
 
-	@PutMapping
-	public Autor update(@RequestBody Autor autor) {
-		return autorService.update(autor);
+	@PutMapping("/{id}")
+	public Autor update(@PathVariable(value = "id") Integer id, @RequestBody Autor autor) {
+		return autorService.update(autor, id);
 	}
 
 	@DeleteMapping("/{id}")

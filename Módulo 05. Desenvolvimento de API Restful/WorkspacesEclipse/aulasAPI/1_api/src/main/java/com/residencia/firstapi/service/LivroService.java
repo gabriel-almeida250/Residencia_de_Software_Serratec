@@ -25,7 +25,7 @@ public class LivroService {
         return livroRepository.save(livro);
     }
     
-    public Livro update(Livro livro, Integer id){
+    public Livro update(Livro livro){
         return livroRepository.save(livro);
     }
     

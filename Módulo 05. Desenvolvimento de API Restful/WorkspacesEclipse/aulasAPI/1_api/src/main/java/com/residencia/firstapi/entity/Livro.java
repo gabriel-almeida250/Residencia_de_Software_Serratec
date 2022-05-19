@@ -18,8 +18,6 @@ public class Livro {
 	@Column(name = "livro_nome")
 	private String livroNome;
 
-	
-
 	@ManyToOne
 	@JoinColumn(name = "editora_id", referencedColumnName = "editora_id")
 	@JsonIgnore

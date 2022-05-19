@@ -6,5 +6,6 @@ import com.residencia.firstapi.entity.Autor;
 
 public interface AutorRepository extends JpaRepository<Autor, Integer>{
 	
-	Autor findByAutorNomeIgnoreCase (String nome);
+	Autor findByAutorNome(String nome);
+	
 }
