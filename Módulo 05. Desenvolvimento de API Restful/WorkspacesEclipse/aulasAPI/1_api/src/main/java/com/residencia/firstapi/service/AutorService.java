@@ -22,15 +22,15 @@ public class AutorService {
 		return autorRepository.findById(id).get();
 	}
 	
-	public String findByName(String nome_autor) {
-		return autorRepository.fi;
+	public Autor findByName(String nome) {
+		return autorRepository.findByAutorNomeIgnoreCase(nome);
 	}
 
 	public Autor save(Autor autor) {
 		return autorRepository.save(autor);
 	}
 
-	public Autor update(Autor autor, Integer id) {
+	public Autor update(Autor autor) {
 		return autorRepository.save(autor);
 	}
 

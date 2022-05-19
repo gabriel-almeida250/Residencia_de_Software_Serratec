@@ -18,6 +18,8 @@ public class Livro {
 	@Column(name = "livro_nome")
 	private String livroNome;
 
+	
+
 	@ManyToOne
 	@JoinColumn(name = "editora_id", referencedColumnName = "editora_id")
 	@JsonIgnore
@@ -50,5 +52,12 @@ public class Livro {
 
 	public void setEditora(Editora editora) {
 		this.editora = editora;
+	}
+	public Autor getAutor() {
+		return autor;
+	}
+
+	public void setAutor(Autor autor) {
+		this.autor = autor;
 	}
 }
