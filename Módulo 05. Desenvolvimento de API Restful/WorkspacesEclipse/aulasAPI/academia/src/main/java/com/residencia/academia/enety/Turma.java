@@ -11,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name = "turma")
 public class Turma {
@@ -34,6 +36,7 @@ public class Turma {
 
 	@ManyToOne
 	@JoinColumn(name = "id_instrutor", referencedColumnName = "id_instrutor")
+	@JsonBackReference
 	private Instrutor instrutor;
 
 	public Integer getIdTurma() {

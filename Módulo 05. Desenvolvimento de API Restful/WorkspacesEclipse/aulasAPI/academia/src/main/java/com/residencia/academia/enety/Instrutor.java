@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "instrutor")
 public class Instrutor {
@@ -33,6 +35,7 @@ public class Instrutor {
 	private Integer titulacaoInstrutor;
 	
 	@OneToMany(mappedBy ="instrutor")
+	@JsonManagedReference
 	private List<Turma> turmaList;
 
 	public Integer getIdInstrutor() {

@@ -3,6 +3,7 @@ package com.residencia.academia.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,10 +20,10 @@ import com.residencia.academia.service.InstrutorService;
 @RestController
 @RequestMapping("/instrutor")
 public class InstrutorController {
-	
+
 	@Autowired
 	private InstrutorService instrutorService;
-	
+
 	@GetMapping
 	public ResponseEntity<List<Instrutor>> findAllInstrutor() {
 		List<Instrutor> instrutorList = instrutorService.findAllInstrutor();
@@ -30,27 +31,32 @@ public class InstrutorController {
 	}
 
 	@GetMapping("/{id}")
-	public Instrutor findById(@PathVariable(value = "id") Integer id) {
-		return instrutorService.findByIdInstrutor(id);
+	public ResponseEntity<Instrutor> findById(@PathVariable(value = "id") Integer id) {
+		Instrutor Instrutor = instrutorService.findByIdInstrutor(id);
+		return new ResponseEntity<>(Instrutor, HttpStatus.OK);
 	}
 
 	@GetMapping("nome/{nomeInstrutor}")
-	public Instrutor findByNome(@PathVariable(value = "nomeInstrutor") String nome) {
-		return instrutorService.findByNomeInstrutor(nome);
+	public ResponseEntity<Instrutor> findByNome(@PathVariable(value = "nomeInstrutor") String nome) {
+		Instrutor Instrutor = instrutorService.findByNomeInstrutor(nome);
+		return new ResponseEntity<>(Instrutor, HttpStatus.OK);
 	}
 
 	@PostMapping
-	public Instrutor save(@RequestBody Instrutor instrutor) {
-		return instrutorService.saveInstrutor(instrutor);
+	public ResponseEntity<Instrutor> save(@RequestBody Instrutor instrutor) {
+		Instrutor Instrutor = instrutorService.saveInstrutor(instrutor);
+		return new ResponseEntity<>(Instrutor, HttpStatus.CREATED);
 	}
 
-	@PutMapping("/{id}")
-	public Instrutor update(@PathVariable(value = "id") Integer id, @RequestBody Instrutor instrutor) {
-		return instrutorService.updateInstrutor(instrutor);
+	@PutMapping
+	public ResponseEntity<Instrutor> update(@PathVariable(value = "id") Integer id, @RequestBody Instrutor instrutor) {
+		Instrutor Instrutor = instrutorService.updateInstrutor(instrutor);
+		return new ResponseEntity<>(Instrutor, HttpStatus.CREATED);
 	}
 
 	@DeleteMapping("/{id}")
-	public void delete(@PathVariable Integer id) {
+	public ResponseEntity<String> delete(@PathVariable Integer id) {
 		instrutorService.deleteInstrutor(id);
+		return new ResponseEntity<>("Deletado com sucesso!", HttpStatus.OK);
 	}
 }

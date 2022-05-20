@@ -3,6 +3,7 @@ package com.residencia.academia.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,22 +31,26 @@ public class TurmaController {
 	}
 
 	@GetMapping("/{id}")
-	public Turma findById(@PathVariable(value = "id") Integer id) {
-		return turmaService.findByIdTurma(id);
+	public ResponseEntity<Turma> findById(@PathVariable(value = "id") Integer id) {
+		Turma turma = turmaService.findByIdTurma(id);
+		return new ResponseEntity<>(turma, HttpStatus.OK);
 	}
 
 	@PostMapping
-	public Turma save(@RequestBody Turma Turma) {
-		return turmaService.saveTurma(Turma);
+	public ResponseEntity<Turma> save(@RequestBody Turma Turma) {
+		Turma turma = turmaService.saveTurma(Turma);
+		return new ResponseEntity<>(turma, HttpStatus.CREATED);
 	}
 
-	@PutMapping("/{id}")
-	public Turma update(@PathVariable(value = "id") Integer id, @RequestBody Turma turma) {
-		return turmaService.updateTurma(turma);
+	@PutMapping
+	public ResponseEntity<Turma> update(@PathVariable(value = "id") Integer id, @RequestBody Turma Turma) {
+		Turma novaTurma = turmaService.updateTurma(Turma);
+		return new ResponseEntity<>(novaTurma, HttpStatus.CREATED);
 	}
 
 	@DeleteMapping("/{id}")
-	public void delete(@PathVariable Integer id) {
+	public ResponseEntity<String> delete(@PathVariable Integer id) {
 		turmaService.deleteTurma(id);
+		return new ResponseEntity<>("Deletado com sucesso!", HttpStatus.OK);
 	}
 }
