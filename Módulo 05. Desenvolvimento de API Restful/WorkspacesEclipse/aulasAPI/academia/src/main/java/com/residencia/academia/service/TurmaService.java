@@ -21,7 +21,7 @@ public class TurmaService {
 	public Turma findByIdTurma(Integer id) {
 		return turmaRepository.findById(id).get();
 	}
-
+	
 	public Turma saveTurma(Turma turma) {
 		return turmaRepository.save(turma);
 	}

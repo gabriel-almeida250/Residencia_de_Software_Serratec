@@ -34,8 +34,8 @@ public class InstrutorController {
 		return instrutorService.findByIdInstrutor(id);
 	}
 
-	@GetMapping("nome/{instrutorNome}")
-	public Instrutor findByNome(@PathVariable(value = "instrutorNome") String nome) {
+	@GetMapping("nome/{nomeInstrutor}")
+	public Instrutor findByNome(@PathVariable(value = "nomeInstrutor") String nome) {
 		return instrutorService.findByNomeInstrutor(nome);
 	}
 

@@ -23,7 +23,7 @@ public class InstrutorService {
 	}
 
 	public Instrutor findByNomeInstrutor(String nome) {
-		return instrutorRepository.findByInstrutorNome(nome);
+		return instrutorRepository.findByNomeInstrutor(nome);
 	}
 
 	public Instrutor saveInstrutor(Instrutor instrutor) {

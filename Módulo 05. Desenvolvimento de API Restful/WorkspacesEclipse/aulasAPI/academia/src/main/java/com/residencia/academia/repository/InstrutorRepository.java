@@ -6,5 +6,5 @@ import com.residencia.academia.enety.Instrutor;
 
 public interface InstrutorRepository extends JpaRepository<Instrutor, Integer> {
 	
-	Instrutor findByInstrutorNome(String nome);
+	Instrutor findByNomeInstrutor(String nome);
 }
