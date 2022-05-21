@@ -19,7 +19,8 @@ public class InstrutorService {
 	}
 
 	public Instrutor findByIdInstrutor(Integer id) {
-		return instrutorRepository.findById(id).get();
+		return instrutorRepository.findById(id).isPresent() ?
+				instrutorRepository.findById(id).get() : null;
 	}
 
 	public Instrutor findByNomeInstrutor(String nome) {

@@ -12,6 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 @Table(name = "turma")
@@ -23,6 +24,7 @@ public class Turma {
 	private Integer idTurma;
 
 	@Column(name = "horario")
+	@JsonFormat(pattern="HH:mm:ss")
 	private Date horarioTurma;
 
 	@Column(name = "duracao")

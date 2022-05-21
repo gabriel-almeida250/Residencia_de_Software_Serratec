@@ -32,8 +32,12 @@ public class InstrutorController {
 
 	@GetMapping("/{id}")
 	public ResponseEntity<Instrutor> findById(@PathVariable(value = "id") Integer id) {
-		Instrutor Instrutor = instrutorService.findByIdInstrutor(id);
-		return new ResponseEntity<>(Instrutor, HttpStatus.OK);
+		Instrutor instrutor = instrutorService.findByIdInstrutor(id);
+		if(null == instrutor) {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+		}else {
+        return new ResponseEntity<>(instrutor, HttpStatus.OK);
+		}
 	}
 
 	@GetMapping("nome/{nomeInstrutor}")
@@ -49,7 +53,7 @@ public class InstrutorController {
 	}
 
 	@PutMapping
-	public ResponseEntity<Instrutor> update(@PathVariable(value = "id") Integer id, @RequestBody Instrutor instrutor) {
+	public ResponseEntity<Instrutor> update( @RequestBody Instrutor instrutor) {
 		Instrutor Instrutor = instrutorService.updateInstrutor(instrutor);
 		return new ResponseEntity<>(Instrutor, HttpStatus.CREATED);
 	}
