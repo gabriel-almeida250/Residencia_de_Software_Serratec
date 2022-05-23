@@ -42,8 +42,12 @@ public class InstrutorController {
 
 	@GetMapping("nome/{nomeInstrutor}")
 	public ResponseEntity<Instrutor> findByNome(@PathVariable(value = "nomeInstrutor") String nome) {
-		Instrutor Instrutor = instrutorService.findByNomeInstrutor(nome);
-		return new ResponseEntity<>(Instrutor, HttpStatus.OK);
+		Instrutor instrutor = instrutorService.findByNomeInstrutor(nome);
+		if (null == instrutor) {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+		} else {
+			return new ResponseEntity<>(instrutor, HttpStatus.OK);
+		}
 	}
 
 	@PostMapping

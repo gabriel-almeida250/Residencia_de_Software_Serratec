@@ -19,9 +19,9 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 @Entity
 @Table(name = "instrutor")
 //Anotação menos ultilizada para quebrar o loop infinito, causado pela falta de JsonIgnore.
-/*@JsonIdentityInfo(
+@JsonIdentityInfo(
 		generator = ObjectIdGenerators.PropertyGenerator.class,
-		property = "instrutorId")*/
+		property = "idInstrutor")
 public class Instrutor {
 
 	@Id
@@ -44,6 +44,7 @@ public class Instrutor {
 	
 	@OneToMany(mappedBy ="instrutor")
 	@JsonManagedReference
+	//@JsonIgnore
 	private List<Turma> turmaList;
 
 	public Integer getIdInstrutor() {

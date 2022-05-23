@@ -16,6 +16,9 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 @Table(name = "turma")
+/*JsonIdentityInfo(
+		generator = ObjectIdGenerators.PropertyGenerator.class,
+		property = "idTurma")*/
 public class Turma {
 
 	@Id
@@ -41,6 +44,7 @@ public class Turma {
 	@ManyToOne
 	@JoinColumn(name = "id_instrutor", referencedColumnName = "id_instrutor")
 	@JsonBackReference
+	//@JsonIgnore
 	private Instrutor instrutor;
 
 	public Integer getIdTurma() {

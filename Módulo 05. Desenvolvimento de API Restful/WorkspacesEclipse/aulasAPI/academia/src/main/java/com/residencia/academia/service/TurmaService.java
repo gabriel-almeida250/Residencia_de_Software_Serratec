@@ -19,7 +19,8 @@ public class TurmaService {
 	}
 
 	public Turma findByIdTurma(Integer id) {
-		return turmaRepository.findById(id).get();
+		return turmaRepository.findById(id).isPresent() ?
+				turmaRepository.findById(id).get() : null;
 	}
 	
 	public Turma saveTurma(Turma turma) {
@@ -31,7 +32,7 @@ public class TurmaService {
 	}
 
 	public void deleteTurma(Integer id) {
-		turmaRepository.deleteById(id);;
+		turmaRepository.deleteById(id);
 	}
 
 	public void deleteTurma(Turma turma) {

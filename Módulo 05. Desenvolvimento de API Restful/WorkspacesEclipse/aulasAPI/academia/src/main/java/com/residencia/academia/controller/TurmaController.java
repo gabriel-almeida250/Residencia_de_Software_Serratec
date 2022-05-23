@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.residencia.academia.enety.Turma;
+import com.residencia.academia.exception.NoSuchElementFoundException;
 import com.residencia.academia.service.TurmaService;
 
 @RestController
@@ -33,7 +34,12 @@ public class TurmaController {
 	@GetMapping("/{id}")
 	public ResponseEntity<Turma> findById(@PathVariable(value = "id") Integer id) {
 		Turma turma = turmaService.findByIdTurma(id);
-		return new ResponseEntity<>(turma, HttpStatus.OK);
+		if (null == turma) {
+			//return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+			throw new NoSuchElementFoundException("Não foi possível encontrar a turma de id: " + id);
+		} else {
+			return new ResponseEntity<>(turma, HttpStatus.OK);
+		}
 	}
 
 	@PostMapping
