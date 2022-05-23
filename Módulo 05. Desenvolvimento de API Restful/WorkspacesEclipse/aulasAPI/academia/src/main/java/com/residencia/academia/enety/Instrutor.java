@@ -11,10 +11,17 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name = "instrutor")
+//Anotação menos ultilizada para quebrar o loop infinito, causado pela falta de JsonIgnore.
+/*@JsonIdentityInfo(
+		generator = ObjectIdGenerators.PropertyGenerator.class,
+		property = "instrutorId")*/
 public class Instrutor {
 
 	@Id
@@ -23,13 +30,14 @@ public class Instrutor {
 	private Integer idInstrutor;
 
 	@Column(name = "rg")
-	private Integer rg;
+	private Integer rgInstrutor;
 
 	@Column(name = "nome")
 	private String nomeInstrutor;
 
 	@Column(name = "nascimento")
-	private Date dataNascimento;
+	@JsonFormat(pattern="yyyy/MM/dd")
+	private Date dataNascimentoInstrutor;
 
 	@Column(name = "titulacao")
 	private Integer titulacaoInstrutor;
@@ -47,11 +55,11 @@ public class Instrutor {
 	}
 
 	public Integer getRg() {
-		return rg;
+		return rgInstrutor;
 	}
 
-	public void setRg(Integer rg) {
-		this.rg = rg;
+	public void setRg(Integer rgInstrutor) {
+		this.rgInstrutor = rgInstrutor;
 	}
 
 	public String getNomeInstrutor() {
@@ -63,11 +71,11 @@ public class Instrutor {
 	}
 
 	public Date getDataNascimento() {
-		return dataNascimento;
+		return dataNascimentoInstrutor;
 	}
 
-	public void setDataNascimento(Date dataNascimento) {
-		this.dataNascimento = dataNascimento;
+	public void setDataNascimento(Date dataNascimentoInstrutor) {
+		this.dataNascimentoInstrutor = dataNascimentoInstrutor;
 	}
 
 	public Integer getTitulacaoInstrutor() {

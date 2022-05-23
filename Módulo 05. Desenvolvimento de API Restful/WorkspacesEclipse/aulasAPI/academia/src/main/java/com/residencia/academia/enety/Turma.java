@@ -31,9 +31,11 @@ public class Turma {
 	private Integer duracaoTurma;
 
 	@Column(name = "data_inicio")
+	@JsonFormat(pattern="yyyy/MM/dd")
 	private Date dataInicio;
 
 	@Column(name = "data_fim")
+	@JsonFormat(pattern="yyyy/MM/dd")
 	private Date dataFim;
 
 	@ManyToOne
