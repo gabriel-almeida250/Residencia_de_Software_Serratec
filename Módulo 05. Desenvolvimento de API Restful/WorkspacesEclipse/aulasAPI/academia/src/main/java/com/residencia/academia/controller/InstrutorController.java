@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.residencia.academia.enety.Instrutor;
+import com.residencia.academia.exception.NoSuchElementFoundException;
 import com.residencia.academia.service.InstrutorService;
 
 @RestController
@@ -33,10 +34,11 @@ public class InstrutorController {
 	@GetMapping("/{id}")
 	public ResponseEntity<Instrutor> findById(@PathVariable(value = "id") Integer id) {
 		Instrutor instrutor = instrutorService.findByIdInstrutor(id);
-		if(null == instrutor) {
-            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
-		}else {
-        return new ResponseEntity<>(instrutor, HttpStatus.OK);
+		if (null == instrutor) {
+			// return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+			throw new NoSuchElementFoundException("Não foi possível encontrar o instrutor de id: " + id);
+		} else {
+			return new ResponseEntity<>(instrutor, HttpStatus.OK);
 		}
 	}
 
@@ -44,7 +46,8 @@ public class InstrutorController {
 	public ResponseEntity<Instrutor> findByNome(@PathVariable(value = "nomeInstrutor") String nome) {
 		Instrutor instrutor = instrutorService.findByNomeInstrutor(nome);
 		if (null == instrutor) {
-            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+			// return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+			throw new NoSuchElementFoundException("Não foi possível encontrar o instrutor com o nome: " + nome);
 		} else {
 			return new ResponseEntity<>(instrutor, HttpStatus.OK);
 		}
@@ -57,14 +60,21 @@ public class InstrutorController {
 	}
 
 	@PutMapping
-	public ResponseEntity<Instrutor> update( @RequestBody Instrutor instrutor) {
+	public ResponseEntity<Instrutor> update(@RequestBody Instrutor instrutor) {
 		Instrutor Instrutor = instrutorService.updateInstrutor(instrutor);
 		return new ResponseEntity<>(Instrutor, HttpStatus.CREATED);
 	}
 
 	@DeleteMapping("/{id}")
 	public ResponseEntity<String> delete(@PathVariable Integer id) {
-		instrutorService.deleteInstrutor(id);
-		return new ResponseEntity<>("Deletado com sucesso!", HttpStatus.OK);
+		Instrutor instrutor = instrutorService.findByIdInstrutor(id);
+		if (null == instrutor) {
+			// return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+			throw new NoSuchElementFoundException("Não foi possível deletar o instrutor com o id: " + id);
+		} else {
+			instrutorService.deleteInstrutor(id);
+			return new ResponseEntity<>("Deletado com sucesso!", HttpStatus.OK);
+		}
 	}
+
 }

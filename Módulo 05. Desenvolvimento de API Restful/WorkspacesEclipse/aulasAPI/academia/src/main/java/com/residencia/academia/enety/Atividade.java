@@ -15,16 +15,16 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @Table(name = "atividade")
 public class Atividade {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_atividade")
 	private Integer idAtividade;
-	
+
 	@Column(name = "nome")
 	private String nomeAtividade;
-	
-	@OneToMany(mappedBy ="atividade")
+
+	@OneToMany(mappedBy = "atividade")
 	@JsonIgnore
 	private List<Turma> turmaList;
 

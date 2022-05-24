@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.residencia.academia.enety.Atividade;
+import com.residencia.academia.exception.NoSuchElementFoundException;
 import com.residencia.academia.service.AtividadeService;
 
 @RestController
@@ -26,17 +27,18 @@ public class AtividadeController {
 
 	@GetMapping
 	public ResponseEntity<List<Atividade>> findAllAtividade() {
-		List<Atividade> instrutorList = atividadeService.findAllAtividade();
-		return ResponseEntity.ok().body(instrutorList);
+		List<Atividade> atividadeList = atividadeService.findAllAtividade();
+		return ResponseEntity.ok().body(atividadeList);
 	}
 
 	@GetMapping("/{id}")
 	public ResponseEntity<Atividade> findById(@PathVariable(value = "id") Integer id) {
-		Atividade instrutor = atividadeService.findByIdAtividade(id);
-		if(null == instrutor) {
-            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
-		}else {
-        return new ResponseEntity<>(instrutor, HttpStatus.OK);
+		Atividade atividade = atividadeService.findByIdAtividade(id);
+		if (null == atividade) {
+			// return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+			throw new NoSuchElementFoundException("Não foi possível encontrar a atividade de id: " + id);
+		} else {
+			return new ResponseEntity<>(atividade, HttpStatus.OK);
 		}
 	}
 
@@ -44,27 +46,34 @@ public class AtividadeController {
 	public ResponseEntity<Atividade> findByNome(@PathVariable(value = "nomeAtividade") String nome) {
 		Atividade atividade = atividadeService.findByNomeAtividade(nome);
 		if (null == atividade) {
-            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+			// return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+			throw new NoSuchElementFoundException("Não foi possível encontrar a atividade com o nome: " + nome);
 		} else {
 			return new ResponseEntity<>(atividade, HttpStatus.OK);
 		}
 	}
 
 	@PostMapping
-	public ResponseEntity<Atividade> save(@RequestBody Atividade instrutor) {
-		Atividade Atividade = atividadeService.saveAtividade(instrutor);
+	public ResponseEntity<Atividade> save(@RequestBody Atividade atividade) {
+		Atividade Atividade = atividadeService.saveAtividade(atividade);
 		return new ResponseEntity<>(Atividade, HttpStatus.CREATED);
 	}
 
 	@PutMapping
-	public ResponseEntity<Atividade> update( @RequestBody Atividade instrutor) {
-		Atividade Atividade = atividadeService.updateAtividade(instrutor);
+	public ResponseEntity<Atividade> update(@RequestBody Atividade atividade) {
+		Atividade Atividade = atividadeService.updateAtividade(atividade);
 		return new ResponseEntity<>(Atividade, HttpStatus.CREATED);
 	}
 
 	@DeleteMapping("/{id}")
 	public ResponseEntity<String> delete(@PathVariable Integer id) {
-		atividadeService.deleteAtividade(id);
-		return new ResponseEntity<>("Deletado com sucesso!", HttpStatus.OK);
+		Atividade turma = atividadeService.findByIdAtividade(id);
+		if (null == turma) {
+			throw new NoSuchElementFoundException(
+					"Não foi possível excluir a atividade de id: " + id + ", ela não existe");
+		} else {
+			atividadeService.deleteAtividade(id);
+			return new ResponseEntity<>("Deletado com sucesso!", HttpStatus.OK);
+		}
 	}
 }

@@ -12,6 +12,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "instrutor")
@@ -40,6 +41,7 @@ public class Instrutor {
 	private Integer titulacaoInstrutor;
 	
 	@OneToMany(mappedBy ="instrutor")
+	@JsonIgnore
 	private List<Turma> turmaList;
 
 	public Integer getIdInstrutor() {

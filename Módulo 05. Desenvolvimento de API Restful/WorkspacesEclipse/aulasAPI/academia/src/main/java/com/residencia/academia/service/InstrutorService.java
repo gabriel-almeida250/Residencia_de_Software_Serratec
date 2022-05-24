@@ -19,8 +19,7 @@ public class InstrutorService {
 	}
 
 	public Instrutor findByIdInstrutor(Integer id) {
-		return instrutorRepository.findById(id).isPresent() ?
-				instrutorRepository.findById(id).get() : null;
+		return instrutorRepository.findById(id).isPresent() ? instrutorRepository.findById(id).get() : null;
 	}
 
 	public Instrutor findByNomeInstrutor(String nome) {
@@ -36,11 +35,8 @@ public class InstrutorService {
 	}
 
 	public void deleteInstrutor(Integer id) {
-		Instrutor instrutor = instrutorRepository.findById(id).get();
-		instrutorRepository.delete(instrutor);
-	}
-
-	public void deleteInstrutor(Instrutor instrutor) {
+		Instrutor instrutor = instrutorRepository.findById(id).isPresent() ? instrutorRepository.findById(id).get()
+				: null;
 		instrutorRepository.delete(instrutor);
 	}
 }
