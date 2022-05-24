@@ -12,16 +12,14 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name = "instrutor")
 //Anotação menos ultilizada para quebrar o loop infinito, causado pela falta de JsonIgnore.
-@JsonIdentityInfo(
+/*@JsonIdentityInfo(
 		generator = ObjectIdGenerators.PropertyGenerator.class,
-		property = "idInstrutor")
+		property = "idInstrutor")*/
 public class Instrutor {
 
 	@Id
@@ -44,7 +42,6 @@ public class Instrutor {
 	
 	@OneToMany(mappedBy ="instrutor")
 	@JsonManagedReference
-	//@JsonIgnore
 	private List<Turma> turmaList;
 
 	public Integer getIdInstrutor() {

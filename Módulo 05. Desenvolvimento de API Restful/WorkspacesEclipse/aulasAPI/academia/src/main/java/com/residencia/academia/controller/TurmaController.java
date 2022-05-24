@@ -35,7 +35,7 @@ public class TurmaController {
 	public ResponseEntity<Turma> findById(@PathVariable(value = "id") Integer id) {
 		Turma turma = turmaService.findByIdTurma(id);
 		if (null == turma) {
-			//return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+			// return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
 			throw new NoSuchElementFoundException("Não foi possível encontrar a turma de id: " + id);
 		} else {
 			return new ResponseEntity<>(turma, HttpStatus.OK);
@@ -56,7 +56,12 @@ public class TurmaController {
 
 	@DeleteMapping("/{id}")
 	public ResponseEntity<String> delete(@PathVariable Integer id) {
-		turmaService.deleteTurma(id);
-		return new ResponseEntity<>("Deletado com sucesso!", HttpStatus.OK);
+		Turma turma = turmaService.findByIdTurma(id);
+		if (null == turma) {
+			throw new NoSuchElementFoundException("Não foi possível excluir a turma de id: " + id + ", ela não existe");
+		} else {
+			turmaService.deleteTurma(id);
+			return new ResponseEntity<>("Deletado com sucesso!", HttpStatus.OK);
+		}
 	}
 }
