@@ -46,6 +46,12 @@ public class Turma {
 	//@JsonBackReference
 	@JsonIgnore
 	private Instrutor instrutor;
+	
+	@ManyToOne
+	@JoinColumn(name = "id_atividade", referencedColumnName = "id_atividade")
+	//@JsonBackReference
+	@JsonIgnore
+	private Atividade atividade;
 
 	public Integer getIdTurma() {
 		return idTurma;
@@ -93,5 +99,13 @@ public class Turma {
 
 	public void setInstrutor(Instrutor instrutor) {
 		this.instrutor = instrutor;
+	}
+
+	public Atividade getAtividade() {
+		return atividade;
+	}
+
+	public void setAtividade(Atividade atividade) {
+		this.atividade = atividade;
 	}
 }

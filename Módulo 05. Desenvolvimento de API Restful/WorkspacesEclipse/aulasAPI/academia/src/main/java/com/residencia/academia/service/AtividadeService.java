@@ -22,12 +22,16 @@ public class AtividadeService {
 		return atividadeRepository.findById(id).isPresent() ?
 				atividadeRepository.findById(id).get() : null;
 	}
+	
+	public Atividade findByNomeAtividade(String nome) {
+		return atividadeRepository.findByNomeAtividade(nome);
+	}
 
 	public Atividade saveAtividade(Atividade atividade) {
 		return atividadeRepository.save(atividade);
 	}
 
-	public Atividade updateInstrutor(Atividade atividade) {
+	public Atividade updateAtividade(Atividade atividade) {
 		return atividadeRepository.save(atividade);
 	}
 
