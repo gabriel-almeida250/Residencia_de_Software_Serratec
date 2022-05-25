@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service;
 
 import com.residencia.academia.dto.InstrutorDTO;
 import com.residencia.academia.dto.TurmaDTO;
-import com.residencia.academia.enety.Instrutor;
-import com.residencia.academia.enety.Turma;
+import com.residencia.academia.entity.Instrutor;
+import com.residencia.academia.entity.Turma;
 import com.residencia.academia.repository.InstrutorRepository;
 
 @Service

@@ -1,4 +1,4 @@
-package com.residencia.academia.enety;
+package com.residencia.academia.entity;
 
 import java.util.List;
 

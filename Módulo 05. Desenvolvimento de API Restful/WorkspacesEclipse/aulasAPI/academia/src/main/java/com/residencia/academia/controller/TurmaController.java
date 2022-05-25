@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.residencia.academia.enety.Turma;
+import com.residencia.academia.dto.InstrutorDTO;
+import com.residencia.academia.dto.TurmaDTO;
+import com.residencia.academia.entity.Turma;
 import com.residencia.academia.exception.NoSuchElementFoundException;
 import com.residencia.academia.service.TurmaService;
 
@@ -41,11 +43,23 @@ public class TurmaController {
 			return new ResponseEntity<>(turma, HttpStatus.OK);
 		}
 	}
+	
+	@GetMapping("/dto/{id}")
+	public ResponseEntity<TurmaDTO> findByIdDTO(@PathVariable(value = "id") Integer id) {
+		TurmaDTO turmaDTO = turmaService.findByIdTurmaDTO(id);
+			return new ResponseEntity<>(turmaDTO, HttpStatus.OK);
+	}
 
 	@PostMapping
 	public ResponseEntity<Turma> save(@RequestBody Turma Turma) {
 		Turma turma = turmaService.saveTurma(Turma);
 		return new ResponseEntity<>(turma, HttpStatus.CREATED);
+	}
+	
+	@PostMapping("/dto")
+	public ResponseEntity<TurmaDTO> saveDTO(@RequestBody TurmaDTO turmaDTO) {
+		TurmaDTO novoTurmaDTO = turmaService.saveTurmaDTO(turmaDTO);
+		return new ResponseEntity<>(novoTurmaDTO, HttpStatus.CREATED);
 	}
 
 	@PutMapping

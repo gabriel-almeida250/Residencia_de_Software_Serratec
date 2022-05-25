@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.residencia.academia.dto.InstrutorDTO;
-import com.residencia.academia.enety.Instrutor;
+import com.residencia.academia.entity.Instrutor;
 import com.residencia.academia.exception.NoSuchElementFoundException;
 import com.residencia.academia.service.InstrutorService;
 

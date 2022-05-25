@@ -1,4 +1,4 @@
-package com.residencia.academia.enety;
+package com.residencia.academia.entity;
 
 import java.util.Date;
 
@@ -27,18 +27,15 @@ public class Turma {
 	private Integer idTurma;
 
 	@Column(name = "horario")
-	@JsonFormat(pattern = "HH:mm:ss")
 	private Date horarioTurma;
 
 	@Column(name = "duracao")
 	private Integer duracaoTurma;
 
 	@Column(name = "data_inicio")
-	@JsonFormat(pattern = "yyyy/MM/dd")
 	private Date dataInicio;
 
 	@Column(name = "data_fim")
-	@JsonFormat(pattern = "yyyy/MM/dd")
 	private Date dataFim;
 
 	@ManyToOne

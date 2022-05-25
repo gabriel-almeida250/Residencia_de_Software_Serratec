@@ -2,6 +2,9 @@ package com.residencia.academia.dto;
 
 import java.util.Date;
 
+import com.residencia.academia.entity.Atividade;
+import com.residencia.academia.entity.Instrutor;
+
 public class TurmaDTO {
 
 	private Integer idTurma;
@@ -9,11 +12,14 @@ public class TurmaDTO {
 	private Integer duracaoTurma;
 	private Date dataInicio;
 	private Date dataFim;
+	private Instrutor instrutor;
+	private Atividade atividade;
 
 	@Override
 	public String toString() {
 		return "TurmaDTO [idTurma=" + idTurma + ", horarioTurma=" + horarioTurma + ", duracaoTurma=" + duracaoTurma
-				+ ", dataInicio=" + dataInicio + ", dataFim=" + dataFim + "]";
+				+ ", dataInicio=" + dataInicio + ", dataFim=" + dataFim + ", instrutor=" + instrutor + ", atividade="
+				+ atividade + "]";
 	}
 
 	public Integer getIdTurma() {
@@ -54,6 +60,22 @@ public class TurmaDTO {
 
 	public void setDataFim(Date dataFim) {
 		this.dataFim = dataFim;
+	}
+
+	public Instrutor getInstrutor() {
+		return instrutor;
+	}
+
+	public void setInstrutor(Instrutor instrutor) {
+		this.instrutor = instrutor;
+	}
+
+	public Atividade getAtividade() {
+		return atividade;
+	}
+
+	public void setAtividade(Atividade atividade) {
+		this.atividade = atividade;
 	}
 
 }

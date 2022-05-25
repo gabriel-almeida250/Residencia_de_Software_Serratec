@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.residencia.academia.enety.Atividade;
+import com.residencia.academia.dto.AtividadeDTO;
+import com.residencia.academia.entity.Atividade;
+import com.residencia.academia.exception.ListaVaziaException;
 import com.residencia.academia.exception.NoSuchElementFoundException;
 import com.residencia.academia.service.AtividadeService;
 
@@ -29,7 +31,7 @@ public class AtividadeController {
 	public ResponseEntity<List<Atividade>> findAllAtividade() {
 		List<Atividade> atividadeList = atividadeService.findAllAtividade();
 		if (atividadeList.isEmpty()) {
-			throw new NoSuchElementFoundException("Essa lista está vazia");
+			throw new ListaVaziaException("Essa lista está vazia");
 		} else {
 			return ResponseEntity.ok().body(atividadeList);
 		}
@@ -44,6 +46,12 @@ public class AtividadeController {
 		} else {
 			return new ResponseEntity<>(atividade, HttpStatus.OK);
 		}
+	}
+	
+	@GetMapping("/dto/{id}")
+	public ResponseEntity<AtividadeDTO> findByIdDTO(@PathVariable(value = "id") Integer id) {
+		AtividadeDTO atividadeDTO = atividadeService.findByIdAtividadeDTO(id);
+			return new ResponseEntity<>(atividadeDTO, HttpStatus.OK);
 	}
 
 	@GetMapping("nome/{nomeAtividade}")
@@ -61,6 +69,12 @@ public class AtividadeController {
 	public ResponseEntity<Atividade> save(@RequestBody Atividade atividade) {
 		Atividade Atividade = atividadeService.saveAtividade(atividade);
 		return new ResponseEntity<>(Atividade, HttpStatus.CREATED);
+	}
+	
+	@PostMapping("/dto")
+	public ResponseEntity<AtividadeDTO> saveDTO(@RequestBody AtividadeDTO atividadeDTO) {
+		AtividadeDTO novoAtividadeDTO = atividadeService.saveAtividadeDTO(atividadeDTO);
+		return new ResponseEntity<>(novoAtividadeDTO, HttpStatus.CREATED);
 	}
 
 	@PutMapping
