@@ -1,0 +1,25 @@
+CREATE TABLE public.instrutor (
+	id_instrutor serial NOT NULL,
+	rg int4,
+	nome varchar(45),
+	nascimento timestamp,
+	titulacao int4,
+	PRIMARY KEY (id_instrutor)
+);
+CREATE TABLE public.turma(
+	id_turma serial NOT NULL,
+	horario timestamp,
+	duracao int4,
+	data_inicio timestamp,
+	data_fim timestamp,
+	id_instrutor int4,
+	PRIMARY KEY (id_turma),
+	FOREIGN KEY (id_instrutor) REFERENCES instrutor(id_instrutor)
+);
+CREATE TABLE public.atividade (
+	id_atividade serial NOT NULL,
+	nome varchar(45),
+	PRIMARY KEY (id_atividade)
+);
+ALTER TABLE public.turma ADD id_atividade int8 NULL;
+ALTER TABLE turma ADD FOREIGN KEY (id_atividade) REFERENCES atividade(id_atividade);

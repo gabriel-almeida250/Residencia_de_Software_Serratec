@@ -38,14 +38,12 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 	@Override
 	public ResponseEntity<Object> handleExceptionInternal(Exception ex, Object body, HttpHeaders headers,
 			HttpStatus status, WebRequest request) {
-
 		return buildErrorResponse(ex, status, request);
 	}
-	
+
 	@ExceptionHandler(ListaVaziaException.class)
 	public ResponseEntity<Object> handleListaVaziaException(ListaVaziaException listaNotFoundException,
 			WebRequest request) {
-		return buildErrorResponse(listaNotFoundException, HttpStatus.NOT_FOUND, request);
+		return buildErrorResponse(listaNotFoundException, "Lista vazia", HttpStatus.NOT_FOUND, request);
 	}
-
 }

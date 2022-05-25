@@ -31,7 +31,7 @@ public class AtividadeController {
 	public ResponseEntity<List<Atividade>> findAllAtividade() {
 		List<Atividade> atividadeList = atividadeService.findAllAtividade();
 		if (atividadeList.isEmpty()) {
-			throw new ListaVaziaException("Essa lista está vazia");
+			throw new ListaVaziaException();
 		} else {
 			return ResponseEntity.ok().body(atividadeList);
 		}
@@ -80,7 +80,7 @@ public class AtividadeController {
 	@PutMapping
 	public ResponseEntity<Atividade> update(@RequestBody Atividade atividade) {
 		Atividade Atividade = atividadeService.updateAtividade(atividade);
-		return new ResponseEntity<>(Atividade, HttpStatus.CREATED);
+		return new ResponseEntity<>(Atividade, HttpStatus.OK);
 	}
 
 	@DeleteMapping("/{id}")

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.residencia.academia.dto.InstrutorDTO;
 import com.residencia.academia.entity.Instrutor;
+import com.residencia.academia.exception.ListaVaziaException;
 import com.residencia.academia.exception.NoSuchElementFoundException;
 import com.residencia.academia.service.InstrutorService;
 
@@ -29,7 +30,11 @@ public class InstrutorController {
 	@GetMapping
 	public ResponseEntity<List<Instrutor>> findAllInstrutor() {
 		List<Instrutor> instrutorList = instrutorService.findAllInstrutor();
-		return ResponseEntity.ok().body(instrutorList);
+		if (instrutorList.isEmpty()) {
+			throw new ListaVaziaException();
+		} else {
+			return ResponseEntity.ok().body(instrutorList);
+		}
 	}
 
 	@GetMapping("/dto/{id}")
@@ -75,7 +80,7 @@ public class InstrutorController {
 	@PutMapping
 	public ResponseEntity<Instrutor> update(@RequestBody Instrutor instrutor) {
 		Instrutor Instrutor = instrutorService.updateInstrutor(instrutor);
-		return new ResponseEntity<>(Instrutor, HttpStatus.CREATED);
+		return new ResponseEntity<>(Instrutor, HttpStatus.OK);
 	}
 
 	@DeleteMapping("/{id}")

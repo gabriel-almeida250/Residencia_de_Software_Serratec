@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.residencia.academia.dto.InstrutorDTO;
 import com.residencia.academia.dto.TurmaDTO;
 import com.residencia.academia.entity.Turma;
+import com.residencia.academia.exception.ListaVaziaException;
 import com.residencia.academia.exception.NoSuchElementFoundException;
 import com.residencia.academia.service.TurmaService;
 
@@ -30,7 +31,11 @@ public class TurmaController {
 	@GetMapping
 	public ResponseEntity<List<Turma>> findAllTurma() {
 		List<Turma> turmaList = turmaService.findAllTurma();
-		return ResponseEntity.ok().body(turmaList);
+		if (turmaList.isEmpty()) {
+			throw new ListaVaziaException();
+		} else {
+			return ResponseEntity.ok().body(turmaList);
+		}
 	}
 
 	@GetMapping("/{id}")
@@ -47,7 +52,11 @@ public class TurmaController {
 	@GetMapping("/dto/{id}")
 	public ResponseEntity<TurmaDTO> findByIdDTO(@PathVariable(value = "id") Integer id) {
 		TurmaDTO turmaDTO = turmaService.findByIdTurmaDTO(id);
+		if (null == turmaDTO) {
+			throw new NoSuchElementFoundException("Não foi possível encontrar a turma de id: " + id);
+		} else {
 			return new ResponseEntity<>(turmaDTO, HttpStatus.OK);
+		}
 	}
 
 	@PostMapping

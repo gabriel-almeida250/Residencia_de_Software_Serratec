@@ -23,10 +23,9 @@ public class AtividadeService {
 	}
 
 	public Atividade findByIdAtividade(Integer id) {
-		return atividadeRepository.findById(id).isPresent() ?
-				atividadeRepository.findById(id).get() : null;
+		return atividadeRepository.findById(id).isPresent() ? atividadeRepository.findById(id).get() : null;
 	}
-	
+
 	public AtividadeDTO findByIdAtividadeDTO(Integer id) {
 		Atividade atividade = atividadeRepository.findById(id).isPresent() ? atividadeRepository.findById(id).get()
 				: null;
@@ -37,7 +36,7 @@ public class AtividadeService {
 		}
 		return atividadeDTO;
 	}
-	
+
 	public Atividade findByNomeAtividade(String nome) {
 		return atividadeRepository.findByNomeAtividade(nome);
 	}
@@ -45,7 +44,7 @@ public class AtividadeService {
 	public Atividade saveAtividade(Atividade atividade) {
 		return atividadeRepository.save(atividade);
 	}
-	
+
 	public AtividadeDTO saveAtividadeDTO(AtividadeDTO atividadeDTO) {
 		Atividade atividade = conversorDTOParaEntidade(atividadeDTO);
 		Atividade atividadeNovo = atividadeRepository.save(atividade);
@@ -64,11 +63,12 @@ public class AtividadeService {
 	public void deleteAtividade(Atividade atividade) {
 		atividadeRepository.delete(atividade);
 	}
+
 	private AtividadeDTO converterEntidadeParaDTO(Atividade atividade) {
 		AtividadeDTO atividadeDTO = new AtividadeDTO();
 		atividadeDTO.setIdAtividade(atividade.getIdAtividade());
 		atividadeDTO.setNomeAtividade(atividade.getNomeAtividade());
-		
+
 		List<TurmaDTO> listaTurmaDTO = new ArrayList<>();
 		if (null != atividade.getTurmaList()) {
 
