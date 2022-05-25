@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.residencia.academia.dto.InstrutorDTO;
 import com.residencia.academia.enety.Instrutor;
 import com.residencia.academia.exception.NoSuchElementFoundException;
 import com.residencia.academia.service.InstrutorService;
@@ -31,6 +32,12 @@ public class InstrutorController {
 		return ResponseEntity.ok().body(instrutorList);
 	}
 
+	@GetMapping("/dto/{id}")
+	public ResponseEntity<InstrutorDTO> findByIdDTO(@PathVariable(value = "id") Integer id) {
+		InstrutorDTO instrutorDTO = instrutorService.findByIdInstrutorDTO(id);
+			return new ResponseEntity<>(instrutorDTO, HttpStatus.OK);
+	}
+	
 	@GetMapping("/{id}")
 	public ResponseEntity<Instrutor> findById(@PathVariable(value = "id") Integer id) {
 		Instrutor instrutor = instrutorService.findByIdInstrutor(id);
@@ -57,6 +64,12 @@ public class InstrutorController {
 	public ResponseEntity<Instrutor> save(@RequestBody Instrutor instrutor) {
 		Instrutor Instrutor = instrutorService.saveInstrutor(instrutor);
 		return new ResponseEntity<>(Instrutor, HttpStatus.CREATED);
+	}
+	
+	@PostMapping("/dto")
+	public ResponseEntity<InstrutorDTO> saveDTO(@RequestBody InstrutorDTO instrutorDTO) {
+		InstrutorDTO novoInstrutorDTO = instrutorService.saveInstrutorDTO(instrutorDTO);
+		return new ResponseEntity<>(novoInstrutorDTO, HttpStatus.CREATED);
 	}
 
 	@PutMapping

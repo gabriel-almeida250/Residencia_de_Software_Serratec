@@ -28,7 +28,11 @@ public class AtividadeController {
 	@GetMapping
 	public ResponseEntity<List<Atividade>> findAllAtividade() {
 		List<Atividade> atividadeList = atividadeService.findAllAtividade();
-		return ResponseEntity.ok().body(atividadeList);
+		if (atividadeList.isEmpty()) {
+			throw new NoSuchElementFoundException("Essa lista está vazia");
+		} else {
+			return ResponseEntity.ok().body(atividadeList);
+		}
 	}
 
 	@GetMapping("/{id}")
