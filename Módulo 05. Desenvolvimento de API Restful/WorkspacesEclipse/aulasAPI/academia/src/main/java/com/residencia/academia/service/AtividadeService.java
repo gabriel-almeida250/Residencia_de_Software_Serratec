@@ -33,8 +33,9 @@ public class AtividadeService {
 		AtividadeDTO atividadeDTO = new AtividadeDTO();
 		if (null != atividade) {
 			atividadeDTO = converterEntidadeParaDTO(atividade);
+			return atividadeDTO;
 		}
-		return atividadeDTO;
+		return null;
 	}
 
 	public Atividade findByNomeAtividade(String nome) {
