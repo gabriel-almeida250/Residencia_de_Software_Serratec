@@ -2,10 +2,6 @@ package com.residencia.comercio.controllers;
 
 import java.util.List;
 
-import javax.validation.Valid;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,9 +20,6 @@ import com.residencia.comercio.entities.Fornecedor;
 import com.residencia.comercio.exceptions.NoSuchElementFoundException;
 import com.residencia.comercio.services.FornecedorService;
 
-import io.swagger.v3.oas.annotations.Parameter;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
-
 @RestController
 @RequestMapping("/fornecedor")
 public class FornecedorController {
@@ -36,7 +29,11 @@ public class FornecedorController {
 	@GetMapping
 	public ResponseEntity<List<Fornecedor>> findAllFornecedor() {
 		List<Fornecedor> fornecedorList = fornecedorService.findAllFornecedor();
-		return new ResponseEntity<>(fornecedorList, HttpStatus.OK);
+		if (fornecedorList.isEmpty()) {
+			throw new NoSuchElementFoundException("Lista Vazia");
+		} else {
+			return new ResponseEntity<>(fornecedorList	, HttpStatus.OK);
+		}
 	}
 
 	@GetMapping("/dto/{id}")

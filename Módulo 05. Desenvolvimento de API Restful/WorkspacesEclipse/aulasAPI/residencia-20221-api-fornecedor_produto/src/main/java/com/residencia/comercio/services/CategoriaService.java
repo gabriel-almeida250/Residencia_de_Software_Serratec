@@ -61,6 +61,7 @@ public class CategoriaService {
 		categoriaRepository.delete(categoria);
 	}
 	
+	@SuppressWarnings("unused")
 	private Categoria convertDTOToEntidade(CategoriaDTO categoriaDTO){
 		Categoria categoria = new Categoria();
 		

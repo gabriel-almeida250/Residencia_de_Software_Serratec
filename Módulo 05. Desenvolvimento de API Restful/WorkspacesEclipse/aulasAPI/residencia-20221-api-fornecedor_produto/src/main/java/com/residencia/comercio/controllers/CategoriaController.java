@@ -2,8 +2,6 @@ package com.residencia.comercio.controllers;
 
 import java.util.List;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,9 +19,6 @@ import com.residencia.comercio.entities.Categoria;
 import com.residencia.comercio.exceptions.NoSuchElementFoundException;
 import com.residencia.comercio.services.CategoriaService;
 
-import io.swagger.v3.oas.annotations.Parameter;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
-
 @RestController
 @RequestMapping("/categoria")
 public class CategoriaController {
@@ -33,7 +28,11 @@ public class CategoriaController {
 	@GetMapping
 	public ResponseEntity<List<Categoria>> findAllCategoria() {
 		List<Categoria> categoriaList = categoriaService.findAllCategoria();
-		return new ResponseEntity<>(categoriaList, HttpStatus.OK);
+		if (categoriaList.isEmpty()) {
+			throw new NoSuchElementFoundException("Lista Vazia");
+		} else {
+			return new ResponseEntity<>(categoriaList, HttpStatus.OK);
+		}
 	}
 
 	@GetMapping("/dto/{id}")
@@ -41,16 +40,16 @@ public class CategoriaController {
 		CategoriaDTO categoriaDTO = categoriaService.findCategoriaDTOById(id);
 		return new ResponseEntity<>(categoriaDTO, HttpStatus.OK);
 	}
-	
+
 	@GetMapping("/{id}")
 	public ResponseEntity<Categoria> findCategoriaById(@PathVariable Integer id) {
 		Categoria categoria = categoriaService.findCategoriaById(id);
-		if(null == categoria)
+		if (null == categoria)
 			throw new NoSuchElementFoundException("Não foi encontrado Categoria com o id " + id);
 		else
 			return new ResponseEntity<>(categoria, HttpStatus.OK);
 	}
-	
+
 	@PostMapping
 	public ResponseEntity<Categoria> saveCategoria(@RequestBody Categoria categoria) {
 		Categoria novoCategoria = categoriaService.saveCategoria(categoria);
@@ -62,7 +61,7 @@ public class CategoriaController {
 		CategoriaDTO novoCategoriaDTO = categoriaService.saveCategoriaDTO(categoriaDTO);
 		return new ResponseEntity<>(novoCategoriaDTO, HttpStatus.CREATED);
 	}
-	
+
 	@PutMapping
 	public ResponseEntity<Categoria> updateCategoria(@RequestBody Categoria categoria) {
 		Categoria novoCategoria = categoriaService.updateCategoria(categoria);
@@ -71,9 +70,9 @@ public class CategoriaController {
 
 	@DeleteMapping("/{id}")
 	public ResponseEntity<String> deleteCategoria(@PathVariable Integer id) {
-		if(null == categoriaService.findCategoriaById(id))
+		if (null == categoriaService.findCategoriaById(id))
 			return new ResponseEntity<>("", HttpStatus.NOT_FOUND);
-		
+
 		categoriaService.deleteCategoria(id);
 		return new ResponseEntity<>("", HttpStatus.OK);
 	}
