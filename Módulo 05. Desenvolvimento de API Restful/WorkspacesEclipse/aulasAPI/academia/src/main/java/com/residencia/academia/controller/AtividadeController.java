@@ -53,7 +53,6 @@ public class AtividadeController {
 		AtividadeDTO atividadeDTO = atividadeService.findByIdAtividadeDTO(id);
 		if (atividadeDTO == null) {
 			throw new NoSuchElementFoundException("Não foi possível encontrar a atividade de id: " + id);
-
 		} else {
 			return new ResponseEntity<>(atividadeDTO, HttpStatus.OK);
 		}	

@@ -2,9 +2,6 @@ package com.residencia.academia.dto;
 
 import java.util.Date;
 
-import com.residencia.academia.entity.Atividade;
-import com.residencia.academia.entity.Instrutor;
-
 public class TurmaDTO {
 
 	private Integer idTurma;

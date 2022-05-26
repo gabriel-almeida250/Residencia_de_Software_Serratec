@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.residencia.academia.dto.InstrutorDTO;
 import com.residencia.academia.dto.TurmaDTO;
 import com.residencia.academia.entity.Turma;
 import com.residencia.academia.exception.ListaVaziaException;
