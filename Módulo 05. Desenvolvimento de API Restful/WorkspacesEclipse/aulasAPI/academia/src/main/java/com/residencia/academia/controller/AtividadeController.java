@@ -71,14 +71,14 @@ public class AtividadeController {
 
 	@PostMapping
 	public ResponseEntity<Atividade> save(@RequestBody Atividade atividade) {
-		Atividade Atividade = atividadeService.saveAtividade(atividade);
-		return new ResponseEntity<>(Atividade, HttpStatus.CREATED);
+		Atividade novaAtividade = atividadeService.saveAtividade(atividade);
+		return new ResponseEntity<>(novaAtividade, HttpStatus.CREATED);
 	}
 	
 	@PostMapping("/dto")
 	public ResponseEntity<AtividadeDTO> saveDTO(@RequestBody AtividadeDTO atividadeDTO) {
-		AtividadeDTO novoAtividadeDTO = atividadeService.saveAtividadeDTO(atividadeDTO);
-		return new ResponseEntity<>(novoAtividadeDTO, HttpStatus.CREATED);
+		AtividadeDTO novaAtividadeDTO = atividadeService.saveAtividadeDTO(atividadeDTO);
+		return new ResponseEntity<>(novaAtividadeDTO, HttpStatus.CREATED);
 	}
 
 	@PutMapping

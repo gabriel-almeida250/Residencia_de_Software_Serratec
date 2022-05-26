@@ -46,4 +46,10 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 			WebRequest request) {
 		return buildErrorResponse(listaNotFoundException, "Lista vazia", HttpStatus.NOT_FOUND, request);
 	}
+	
+	@ExceptionHandler(AtividadeRepetidaException.class)
+	public ResponseEntity<Object> handleAtividadeRepetidaException(AtividadeRepetidaException atividadeRepeptidaException,
+			WebRequest request) {
+		return buildErrorResponse(atividadeRepeptidaException, HttpStatus.BAD_REQUEST, request);
+	}
 }
