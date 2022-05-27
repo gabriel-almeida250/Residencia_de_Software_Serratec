@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.residencia.comercio.dtos.ProdutoDTO;
 import com.residencia.comercio.entities.Produto;
 import com.residencia.comercio.exceptions.NoSuchElementFoundException;
 import com.residencia.comercio.services.ProdutoService;
@@ -43,11 +44,23 @@ public class ProdutoController {
 		else
 			return new ResponseEntity<>(produto, HttpStatus.OK);
 	}
+	
+	@GetMapping("/dto/{id}")
+	public ResponseEntity<ProdutoDTO> findProdutoDTOById(@PathVariable Integer id) {
+		ProdutoDTO produtoDTO = produtoService.findProdutoDTOById(id);
+		return new ResponseEntity<>(produtoDTO, HttpStatus.OK);
+	}
 
 	@PostMapping
-	public ResponseEntity<Produto> saveProdutoCompleto(@RequestBody Produto produto) {
+	public ResponseEntity<Produto> saveProduto(@RequestBody Produto produto) {
 		Produto novoProduto = produtoService.saveProduto(produto);
 		return new ResponseEntity<>(novoProduto, HttpStatus.CREATED);
+	}
+	
+	@PostMapping("/dto")
+	public ResponseEntity<ProdutoDTO> saveProdutoDTO(@RequestBody ProdutoDTO produtoDTO) {
+		ProdutoDTO novoProdutoDTO = produtoService.saveProdutoDTO(produtoDTO);
+		return new ResponseEntity<>(novoProdutoDTO, HttpStatus.CREATED);
 	}
 
 	@PutMapping
