@@ -1,12 +1,14 @@
 package com.residencia.comercio.entities;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
@@ -70,9 +72,8 @@ public class Fornecedor {
 	@Column(name = "data_abertura")
 	private Date dataAbertura;
 
-	//@OneToMany(mappedBy = "fornecedor")
-	//@JsonManagedReference
-	//private List<Produto> produtoList;
+	@OneToMany(mappedBy = "fornecedor")
+	private List<Produto> produtoList;
 	
 	public Integer getIdFornecedor() {
 		return idFornecedor;
@@ -200,6 +201,14 @@ public class Fornecedor {
 
 	public void setDataAbertura(Date dataAbertura) {
 		this.dataAbertura = dataAbertura;
+	}
+
+	public List<Produto> getProdutoList() {
+		return produtoList;
+	}
+
+	public void setProdutoList(List<Produto> produtoList) {
+		this.produtoList = produtoList;
 	}
 	
 }
