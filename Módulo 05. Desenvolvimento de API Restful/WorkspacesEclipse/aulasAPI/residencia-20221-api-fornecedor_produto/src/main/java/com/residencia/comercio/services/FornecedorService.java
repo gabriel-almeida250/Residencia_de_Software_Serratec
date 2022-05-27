@@ -127,7 +127,7 @@ public class FornecedorService {
 
 		CadastroEmpresaCepDTO cadastroEmpresaCepDTO = restTemplate.getForObject(uri,
 				CadastroEmpresaCepDTO.class, params);
-
+		
 		return cadastroEmpresaCepDTO;
 	}
 }
