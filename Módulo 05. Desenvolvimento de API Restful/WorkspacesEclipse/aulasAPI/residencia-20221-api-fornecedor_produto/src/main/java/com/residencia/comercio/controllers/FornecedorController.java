@@ -67,6 +67,12 @@ public class FornecedorController {
 		Fornecedor novoFornecedor = fornecedorService.saveFornecedor(fornecedor);
 		return new ResponseEntity<>(novoFornecedor, HttpStatus.CREATED);
 	}
+	
+	@PostMapping("/{cnpj}")
+	public ResponseEntity<Fornecedor> saveFornecedorCnpj(@PathVariable String cnpj) {
+		Fornecedor novoFornecedor = fornecedorService.saveFornecedorCnpj(cnpj);
+		return new ResponseEntity<>(novoFornecedor, HttpStatus.CREATED);
+	}
 
 	@PostMapping("/completo")
 	public ResponseEntity<Fornecedor> saveFornecedorCompleto(@RequestBody Fornecedor fornecedor) {

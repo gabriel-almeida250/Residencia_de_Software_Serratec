@@ -6,4 +6,6 @@ import com.residencia.comercio.entities.Categoria;
 
 public interface CategoriaRepository extends JpaRepository<Categoria,Integer> {
 
+	Boolean existsByNomeImagem(String nomeImagem);
+
 }

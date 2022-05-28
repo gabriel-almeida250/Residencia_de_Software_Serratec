@@ -2,6 +2,8 @@ package com.residencia.comercio.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.residencia.comercio.dtos.ProdutoDTO;
@@ -20,8 +23,7 @@ import com.residencia.comercio.exceptions.NoSuchElementFoundException;
 import com.residencia.comercio.services.ProdutoService;
 
 @RestController
-@RequestMapping("/produto")
-
+@RequestMapping("/produto") 
 public class ProdutoController {
 	@Autowired
 	ProdutoService produtoService;
@@ -45,6 +47,15 @@ public class ProdutoController {
 			return new ResponseEntity<>(produto, HttpStatus.OK);
 	}
 	
+	@GetMapping("/id")
+	public ResponseEntity<Produto> findProdutoByIdRequest(@RequestParam Integer id) {
+		Produto produto = produtoService.findByIdProduto(id);
+		if (null == produto)
+			throw new NoSuchElementFoundException("Não foi encontrado Produto com o id " + id);
+		else
+			return new ResponseEntity<>(produto, HttpStatus.OK);
+	}
+	
 	@GetMapping("/dto/{id}")
 	public ResponseEntity<ProdutoDTO> findProdutoDTOById(@PathVariable Integer id) {
 		ProdutoDTO produtoDTO = produtoService.findProdutoDTOById(id);
@@ -52,7 +63,7 @@ public class ProdutoController {
 	}
 
 	@PostMapping
-	public ResponseEntity<Produto> saveProduto(@RequestBody Produto produto) {
+	public ResponseEntity<Produto> saveProduto(@Valid @RequestBody Produto produto) {
 		Produto novoProduto = produtoService.saveProduto(produto);
 		return new ResponseEntity<>(novoProduto, HttpStatus.CREATED);
 	}

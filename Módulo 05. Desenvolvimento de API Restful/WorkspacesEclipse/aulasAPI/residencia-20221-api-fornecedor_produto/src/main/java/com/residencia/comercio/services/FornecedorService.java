@@ -47,6 +47,11 @@ public class FornecedorService {
 		Fornecedor novoFornecedor = fornecedorRepository.save(fornecedor);
 		return converterEntidadeParaDto(novoFornecedor);
 	}
+	
+	public Fornecedor saveFornecedorCnpj(String cnpj) {
+		Fornecedor novoFornecedor = fornecedorCnpj(cnpj);
+		return fornecedorRepository.save(novoFornecedor);
+	}
 
 	public Fornecedor updateFornecedor(Fornecedor fornecedor) {
 		return fornecedorRepository.save(fornecedor);
@@ -129,5 +134,24 @@ public class FornecedorService {
 				CadastroEmpresaCepDTO.class, params);
 		
 		return cadastroEmpresaCepDTO;
+	}
+	
+	public Fornecedor fornecedorCnpj(String cer) {
+		CadastroEmpresaReceitaDTO cert = consultarDadosPorCnpj(cer);
+		Fornecedor fornecedorCnpj = new Fornecedor();
+		
+		fornecedorCnpj.setBairro(cert.getBairro());
+		fornecedorCnpj.setCep(cert.getCep());
+		fornecedorCnpj.setComplemento(cert.getComplemento());
+		fornecedorCnpj.setCnpj(cert.getCnpj());
+		fornecedorCnpj.setEmail(cert.getEmail());
+		fornecedorCnpj.setLogradouro(cert.getLogradouro());
+		fornecedorCnpj.setMunicipio(cert.getMunicipio());
+		fornecedorCnpj.setNomeFantasia(cert.getFantasia());
+		fornecedorCnpj.setStatusSituacao(cert.getSituacao());
+		fornecedorCnpj.setTipo(cert.getTipo());
+		fornecedorCnpj.setTelefone(cert.getTelefone());
+		
+		return fornecedorCnpj;
 	}
 }
