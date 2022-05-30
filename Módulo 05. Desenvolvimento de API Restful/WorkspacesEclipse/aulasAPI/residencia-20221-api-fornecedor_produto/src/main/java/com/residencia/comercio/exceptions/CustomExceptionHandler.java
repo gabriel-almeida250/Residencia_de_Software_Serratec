@@ -18,7 +18,7 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(Exception.class)
     public final ResponseEntity<Object> handleAllExceptions(Exception ex, WebRequest request) {
       List<String> details = new ArrayList<>();
-      details.add(ex.getLocalizedMessage());
+      details.add(ex.getLocalizedMessage());	
       HttpStatus httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
       ErrorResponse error = new ErrorResponse(httpStatus.value(), "Erro Interno no Servidor", details);
       

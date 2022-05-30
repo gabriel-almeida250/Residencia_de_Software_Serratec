@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -54,13 +55,13 @@ public class CategoriaController {
 	}
 
 	@PostMapping
-	public ResponseEntity<Categoria> saveCategoria(@RequestBody Categoria categoria) {
+	public ResponseEntity<Categoria> saveCategoria(@Validated @RequestBody Categoria categoria) {
 		Categoria novoCategoria = categoriaService.saveCategoria(categoria);
 		return new ResponseEntity<>(novoCategoria, HttpStatus.CREATED);
 	}
 
 	@PostMapping("/dto")
-	public ResponseEntity<CategoriaDTO> saveCategoriaDTO(@RequestBody CategoriaDTO categoriaDTO) {
+	public ResponseEntity<CategoriaDTO> saveCategoriaDTO(@Validated @RequestBody CategoriaDTO categoriaDTO) {
 		CategoriaDTO novoCategoriaDTO = categoriaService.saveCategoriaDTO(categoriaDTO);
 		return new ResponseEntity<>(novoCategoriaDTO, HttpStatus.CREATED);
 	}
@@ -74,7 +75,7 @@ public class CategoriaController {
 	}
 
 	@PutMapping
-	public ResponseEntity<Categoria> updateCategoria(@RequestBody Categoria categoria) {
+	public ResponseEntity<Categoria> updateCategoria(@Validated @RequestBody Categoria categoria) {
 		Categoria novoCategoria = categoriaService.updateCategoria(categoria);
 		return new ResponseEntity<>(novoCategoria, HttpStatus.OK);
 	}

@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -69,13 +70,13 @@ public class ProdutoController {
 	}
 	
 	@PostMapping("/dto")
-	public ResponseEntity<ProdutoDTO> saveProdutoDTO(@RequestBody ProdutoDTO produtoDTO) {
+	public ResponseEntity<ProdutoDTO> saveProdutoDTO(@Validated @RequestBody ProdutoDTO produtoDTO) {
 		ProdutoDTO novoProdutoDTO = produtoService.saveProdutoDTO(produtoDTO);
 		return new ResponseEntity<>(novoProdutoDTO, HttpStatus.CREATED);
 	}
 
 	@PutMapping
-	public ResponseEntity<Produto> updateProduto(@RequestBody Produto produto) {
+	public ResponseEntity<Produto> updateProduto(@Validated @RequestBody Produto produto) {
 		Produto novoProduto = produtoService.updateProduto(produto);
 		return new ResponseEntity<>(novoProduto, HttpStatus.OK);
 	}

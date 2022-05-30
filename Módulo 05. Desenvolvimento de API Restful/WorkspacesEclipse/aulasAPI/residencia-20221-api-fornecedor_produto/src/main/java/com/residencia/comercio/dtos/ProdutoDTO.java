@@ -1,9 +1,13 @@
 package com.residencia.comercio.dtos;
 
+import javax.validation.constraints.NotBlank;
+
 public class ProdutoDTO {
 
 	private Integer idProduto;
+	@NotBlank(message = "O sku de produto não pode estar vazio")
 	private String sku;
+	@NotBlank(message = "O Nome de produto não pode estar vazio")
 	private String nomeProduto;
 	private FornecedorDTO fornecedorDTO;
 	private CategoriaDTO categoriaDTO;

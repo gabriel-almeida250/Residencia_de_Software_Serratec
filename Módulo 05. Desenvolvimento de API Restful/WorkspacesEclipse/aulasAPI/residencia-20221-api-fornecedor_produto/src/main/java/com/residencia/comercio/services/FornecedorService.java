@@ -1,5 +1,8 @@
 package com.residencia.comercio.services;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -48,7 +51,7 @@ public class FornecedorService {
 		return converterEntidadeParaDto(novoFornecedor);
 	}
 	
-	public Fornecedor saveFornecedorCnpj(String cnpj) {
+	public Fornecedor saveFornecedorCnpj(String cnpj) throws ParseException {
 		Fornecedor novoFornecedor = fornecedorCnpj(cnpj);
 		return fornecedorRepository.save(novoFornecedor);
 	}
@@ -136,7 +139,8 @@ public class FornecedorService {
 		return cadastroEmpresaCepDTO;
 	}
 	
-	public Fornecedor fornecedorCnpj(String cer) {
+	
+	public Fornecedor fornecedorCnpj(String cer) throws ParseException {
 		CadastroEmpresaReceitaDTO cert = consultarDadosPorCnpj(cer);
 		Fornecedor fornecedorCnpj = new Fornecedor();
 		
@@ -151,7 +155,13 @@ public class FornecedorService {
 		fornecedorCnpj.setStatusSituacao(cert.getSituacao());
 		fornecedorCnpj.setTipo(cert.getTipo());
 		fornecedorCnpj.setTelefone(cert.getTelefone());
-		
+		fornecedorCnpj.setRazaoSocial(cert.getNome());
+		SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy"); 
+		Date dataFormatada = formato.parse(cert.getAbertura()); 
+		fornecedorCnpj.setDataAbertura(dataFormatada);
+		fornecedorCnpj.setUf(cert.getUf());
+		fornecedorCnpj.setNumero(cert.getNumero());
+
 		return fornecedorCnpj;
 	}
 }

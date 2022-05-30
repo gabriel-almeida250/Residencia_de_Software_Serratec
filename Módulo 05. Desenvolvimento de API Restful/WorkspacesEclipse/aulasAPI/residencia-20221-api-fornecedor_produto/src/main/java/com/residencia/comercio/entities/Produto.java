@@ -15,25 +15,27 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name = "produto")
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "idProduto")
+@JsonIdentityInfo(scope = Produto.class,
+generator = ObjectIdGenerators.PropertyGenerator.class, property = "idProduto")
 public class Produto {
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_produto")
 	private Integer idProduto;
-	
-	@NotBlank(message = "O sku do produto não pode estar em branco")
+
+	@NotBlank(message = "O SKU do produto não pode estar vazio")
 	@Column(name = "sku")
 	private String sku;
-	
+
+	@NotBlank(message = "O Nome do produto não pode estar vazio")
 	@Column(name = "nome_produto")
 	private String nomeProduto;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "id_fornecedor", referencedColumnName = "id_fornecedor")
 	private Fornecedor fornecedor;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "id_categoria", referencedColumnName = "id_categoria")
 	private Categoria categoria;

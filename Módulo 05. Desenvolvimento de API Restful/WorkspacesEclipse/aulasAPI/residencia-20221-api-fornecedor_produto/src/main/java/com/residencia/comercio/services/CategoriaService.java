@@ -10,7 +10,6 @@ import org.springframework.web.multipart.MultipartFile;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.residencia.comercio.dtos.CategoriaDTO;
 import com.residencia.comercio.entities.Categoria;
-import com.residencia.comercio.exceptions.NomeImagemIgualException;
 import com.residencia.comercio.repositories.CategoriaRepository;
 
 @Service
@@ -58,6 +57,7 @@ public class CategoriaService {
 		}
 		Categoria categoriaDB = categoriaRepository.save(categoriaConvertida);
 		categoriaDB.setNomeImagem(categoriaDB.getIdCategoria() + "_" + file.getOriginalFilename());
+		@SuppressWarnings("unused")
 		Categoria categoriaAtualizada = categoriaRepository.save(categoriaDB);
 		return null;
 
