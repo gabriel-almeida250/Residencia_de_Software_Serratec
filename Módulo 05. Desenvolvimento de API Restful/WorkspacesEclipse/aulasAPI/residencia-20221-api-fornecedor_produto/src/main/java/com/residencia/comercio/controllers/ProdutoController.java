@@ -3,6 +3,7 @@ package com.residencia.comercio.controllers;
 import java.util.List;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,6 +26,7 @@ import com.residencia.comercio.services.ProdutoService;
 
 @RestController
 @RequestMapping("/produto") 
+@Validated
 public class ProdutoController {
 	@Autowired
 	ProdutoService produtoService;
@@ -48,13 +50,20 @@ public class ProdutoController {
 			return new ResponseEntity<>(produto, HttpStatus.OK);
 	}
 	
-	@GetMapping("/id")
-	public ResponseEntity<Produto> findProdutoByIdRequest(@RequestParam Integer id) {
-		Produto produto = produtoService.findByIdProduto(id);
-		if (null == produto)
-			throw new NoSuchElementFoundException("Não foi encontrado Produto com o id " + id);
-		else
-			return new ResponseEntity<>(produto, HttpStatus.OK);
+	@GetMapping("/query")
+	public ResponseEntity<Produto> findByIdQuery(
+			@RequestParam
+			@NotBlank(message = "O sku deve ser preenchido.")
+			String sku){
+		return new ResponseEntity<>(null, HttpStatus.CONTINUE);
+	}
+	
+	@GetMapping("/request")
+	public ResponseEntity<Produto> findByIdRequest(
+			@RequestParam
+			@NotBlank(message = "O id deve ser preenchido.")
+			Integer id){
+		return new ResponseEntity<>(null, HttpStatus.CONTINUE);
 	}
 	
 	@GetMapping("/dto/{id}")

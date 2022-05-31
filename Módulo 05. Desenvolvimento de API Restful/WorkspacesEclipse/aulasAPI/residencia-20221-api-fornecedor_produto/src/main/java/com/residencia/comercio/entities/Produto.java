@@ -10,6 +10,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
+import org.springframework.validation.annotation.Validated;
+
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
@@ -17,6 +19,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 @Table(name = "produto")
 @JsonIdentityInfo(scope = Produto.class,
 generator = ObjectIdGenerators.PropertyGenerator.class, property = "idProduto")
+
 public class Produto {
 	
 	@Id

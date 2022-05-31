@@ -9,7 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
@@ -24,7 +23,6 @@ public class Categoria {
 	private Integer idCategoria;
 
 	@Column(name = "nome_categoria")
-	@NotBlank(message = "O Nome da categoria não pode estar vazio")
 	private String nomeCategoria;
 	
 	@Column(name = "imagem")
@@ -32,6 +30,12 @@ public class Categoria {
 
 	@OneToMany(mappedBy = "categoria")
 	private List<Produto> produtoList;
+	
+	@Override
+	public String toString() {
+		return "Categoria [idCategoria=" + idCategoria + ", nomeCategoria=" + nomeCategoria + ", nomeImagem="
+				+ nomeImagem + ", produtoList=" + produtoList + "]";
+	}
 
 	public Integer getIdCategoria() {
 		return idCategoria;

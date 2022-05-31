@@ -12,6 +12,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.br.CNPJ;
@@ -29,6 +31,7 @@ public class Fornecedor {
 	@Column(name = "id_fornecedor")
 	private Integer idFornecedor;
 
+	
 	@CNPJ
 	@NotBlank(message = "O CNPJ do produto não pode estar vazio")
 	@Column(name = "cnpj")
@@ -74,10 +77,11 @@ public class Fornecedor {
 	@Column(name = "logradouro")
 	private String logradouro;
 
+	@NotNull
 	@Column(name = "numero")
 	private String numero;
 
-	@NotBlank(message = "O Complemento do produto não pode estar vazio")
+	@NotNull(message = "O Complemento do produto não pode estar vazio")
 	@Column(name = "complemento")
 	private String complemento;
 
