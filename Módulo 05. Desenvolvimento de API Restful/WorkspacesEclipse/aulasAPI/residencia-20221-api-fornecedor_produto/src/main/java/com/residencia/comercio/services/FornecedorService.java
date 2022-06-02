@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -139,12 +140,25 @@ public class FornecedorService {
 		return cadastroEmpresaCepDTO;
 	}
 	
+	/*
+	 * public FornecedorDTO buscarFilmeApiExternaPorImdb(String cep) { RestTemplate
+	 * restTemplate = new RestTemplate(); FornecedorDTO filmeTO =
+	 * restTemplate.getForObject("viacep.com.br/ws/{cep}/json/" + cep +
+	 * FornecedorDTO.class); return filmeTO;
+	 * 
+	 * }
+	 */
+	
 	
 	public Fornecedor fornecedorCnpj(String cer) throws ParseException {
 		CadastroEmpresaReceitaDTO cert = consultarDadosPorCnpj(cer);
 		Fornecedor fornecedorCnpj = new Fornecedor();
 		
-		fornecedorCnpj.setBairro(cert.getBairro());
+		//Modo mais curto de copiar os atributos de um objeto para dentro de outro
+		BeanUtils.copyProperties(cert, fornecedorCnpj);
+		
+		//Modo manual
+		/*fornecedorCnpj.setBairro(cert.getBairro());
 		fornecedorCnpj.setCep(cert.getCep());
 		fornecedorCnpj.setComplemento(cert.getComplemento());
 		fornecedorCnpj.setCnpj(cert.getCnpj());
@@ -160,7 +174,7 @@ public class FornecedorService {
 		Date dataFormatada = formato.parse(cert.getAbertura()); 
 		fornecedorCnpj.setDataAbertura(dataFormatada);
 		fornecedorCnpj.setUf(cert.getUf());
-		fornecedorCnpj.setNumero(cert.getNumero());
+		fornecedorCnpj.setNumero(cert.getNumero());*/
 
 		return fornecedorCnpj;
 	}

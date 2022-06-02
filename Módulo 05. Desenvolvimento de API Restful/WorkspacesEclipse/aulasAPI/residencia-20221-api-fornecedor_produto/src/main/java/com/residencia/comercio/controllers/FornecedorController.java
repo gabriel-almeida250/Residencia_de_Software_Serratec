@@ -22,8 +22,11 @@ import com.residencia.comercio.entities.Fornecedor;
 import com.residencia.comercio.exceptions.NoSuchElementFoundException;
 import com.residencia.comercio.services.FornecedorService;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 @RestController
 @RequestMapping("/fornecedor")
+@Tag(name = "Fornecedor", description = "Controllers")
 public class FornecedorController {
 
 	@Autowired
@@ -95,5 +98,4 @@ public class FornecedorController {
 		fornecedorService.deleteFornecedor(id);
 		return new ResponseEntity<>("", HttpStatus.OK);
 	}
-
 }

@@ -23,13 +23,20 @@ import com.residencia.comercio.entities.Categoria;
 import com.residencia.comercio.exceptions.NoSuchElementFoundException;
 import com.residencia.comercio.services.CategoriaService;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+
 @RestController
 @RequestMapping("/categoria")
+
 public class CategoriaController {
 	@Autowired
 	CategoriaService categoriaService;
 
 	@GetMapping
+	@ApiResponses(value = { @ApiResponse(responseCode = "200", description = "Lista todos as categorias") })
 	public ResponseEntity<List<Categoria>> findAllCategoria() {
 		List<Categoria> categoriaList = categoriaService.findAllCategoria();
 		if (categoriaList.isEmpty()) {

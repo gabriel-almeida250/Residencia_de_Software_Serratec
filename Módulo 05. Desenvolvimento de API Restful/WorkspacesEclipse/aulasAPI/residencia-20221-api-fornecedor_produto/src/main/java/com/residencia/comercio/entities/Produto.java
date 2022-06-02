@@ -7,13 +7,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
-import org.springframework.validation.annotation.Validated;
-
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
+import io.swagger.v3.oas.annotations.media.Schema;
 
 @Entity
 @Table(name = "produto")
@@ -28,6 +29,7 @@ public class Produto {
 	private Integer idProduto;
 
 	@NotBlank(message = "O SKU do produto não pode estar vazio")
+	@Schema
 	@Column(name = "sku")
 	private String sku;
 
@@ -42,6 +44,10 @@ public class Produto {
 	@ManyToOne
 	@JoinColumn(name = "id_categoria", referencedColumnName = "id_categoria")
 	private Categoria categoria;
+	
+	
+	 //@OneToOne(mappedBy = "produto") private Estoque estoque;
+	 
 
 	public Integer getIdProduto() {
 		return idProduto;

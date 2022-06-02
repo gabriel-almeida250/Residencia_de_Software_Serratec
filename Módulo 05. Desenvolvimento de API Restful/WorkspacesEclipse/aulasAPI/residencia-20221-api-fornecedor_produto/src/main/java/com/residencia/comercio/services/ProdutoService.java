@@ -67,6 +67,7 @@ public class ProdutoService {
 	}
 	
 	private Produto convertDTOToEntidade(ProdutoDTO produtoDTO) {
+		
 		Produto produto = new Produto();
 
 		produto.setIdProduto(produtoDTO.getIdProduto());
@@ -81,6 +82,7 @@ public class ProdutoService {
 	}
 
 	private ProdutoDTO converterEntidadeParaDto(Produto produto) {
+		
 		ProdutoDTO produtoDTO = new ProdutoDTO();
 		produtoDTO.setIdProduto(produto.getIdProduto());
 		produtoDTO.setNomeProduto(produto.getNomeProduto());
