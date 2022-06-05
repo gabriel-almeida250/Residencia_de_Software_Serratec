@@ -1,10 +1,6 @@
 package com.example.ecommerce.dtos;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
-import com.example.ecommerce.entities.Cliente;
-import com.example.ecommerce.entities.Endereco;
-import com.example.ecommerce.services.EnderecoService;
+import java.util.List;
 
 public class ClienteDTO {
 
@@ -17,29 +13,24 @@ public class ClienteDTO {
 	private String cpfCliente;
 
 	private String telefoneCliente;
+	
+	private List<PedidoDTO> listaPedidoDTO;
 
-	private EnderecoDTO endereco;
+	private EnderecoDTO enderecoDTO;
 
 	public ClienteDTO() {
 		super();
 	}
 
 	public ClienteDTO(Integer idCliente, String emailCliente, String nomeCliente, String cpfCliente,
-			String telefoneCliente, EnderecoDTO endereco) {
+			String telefoneCliente, EnderecoDTO enderecoDTO) {
 		super();
 		this.idCliente = idCliente;
 		this.emailCliente = emailCliente;
 		this.nomeCliente = nomeCliente;
 		this.cpfCliente = cpfCliente;
 		this.telefoneCliente = telefoneCliente;
-		this.endereco = endereco;
-	}
-
-	@Override
-	public String toString() {
-		return "ClienteDTO [idCliente=" + idCliente + ", emailCliente=" + emailCliente + ", nomeCliente=" + nomeCliente
-				+ ", cpfCliente=" + cpfCliente + ", telefoneCliente=" + telefoneCliente + ", endereco=" + endereco
-				+ "]";
+		this.enderecoDTO = enderecoDTO;
 	}
 
 	public Integer getIdCliente() {
@@ -82,20 +73,25 @@ public class ClienteDTO {
 		this.telefoneCliente = telefoneCliente;
 	}
 
-	public EnderecoDTO getEndereco() {
-		return endereco;
+	public EnderecoDTO getEnderecoDTO() {
+		return enderecoDTO;
 	}
 
-	public void setEndereco(EnderecoDTO endereco) {
-		this.endereco = endereco;
+	public void setEndereco(EnderecoDTO enderecoDTO) {
+		this.enderecoDTO = enderecoDTO;
+	}
+
+	public List<PedidoDTO> getListaPedidoDTO() {
+		return listaPedidoDTO;
+	}
+
+	public void setListaPedidoDTO(List<PedidoDTO> listaPedidoDTO) {
+		this.listaPedidoDTO = listaPedidoDTO;
+	}
+
+	public void setEnderecoDTO(EnderecoDTO enderecoDTO) {
+		this.enderecoDTO = enderecoDTO;
 	}
 	
-	@Autowired
-	EnderecoService enderecoService;
-	
-	public Cliente converterDTOparaEntidade() {
-		Cliente cliente = new Cliente();
-		Endereco endereco = enderecoService.findEnderecoById(cliente.getEndereco().getIdEndereco());
-		return new Cliente(idCliente, emailCliente, nomeCliente, cpfCliente, telefoneCliente, endereco);
-	}
+
 }

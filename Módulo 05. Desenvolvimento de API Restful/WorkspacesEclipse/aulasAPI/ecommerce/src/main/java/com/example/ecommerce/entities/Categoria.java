@@ -10,45 +10,30 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.example.ecommerce.dtos.CategoriaDTO;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name = "categoria")
-@JsonIdentityInfo(scope = Categoria.class, generator = ObjectIdGenerators.PropertyGenerator.class, property = "idCategoria")
+@JsonIdentityInfo(scope = Categoria.class, generator = ObjectIdGenerators.PropertyGenerator.class, 
+property = "idCategoria")
 public class Categoria {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_categoria")
 	private Integer idCategoria;
-
+	
 	@Column(name = "nome")
 	private String nomeCategoria;
-
+	
 	@Column(name = "descricao")
 	private String descricaoCategoria;
-
-	@OneToMany(mappedBy = "categoria")
+	
+	@JsonIgnore
+	@OneToMany (mappedBy = "categoria")
 	private List<Produto> produtoList;
-
-	public Categoria() {
-		super();
-	}
-
-	public Categoria(Integer idCategoria, String nomeCategoria, String descricaoCategoria) {
-		super();
-		this.idCategoria = idCategoria;
-		this.nomeCategoria = nomeCategoria;
-		this.descricaoCategoria = descricaoCategoria;
-	}
-
-	@Override
-	public String toString() {
-		return "Categoria [idCategoria=" + idCategoria + ", nomeCategoria=" + nomeCategoria + ", descricaoCategoria="
-				+ descricaoCategoria + ", produtoList=" + produtoList + "]";
-	}
 
 	public Integer getIdCategoria() {
 		return idCategoria;
@@ -81,10 +66,13 @@ public class Categoria {
 	public void setProdutoList(List<Produto> produtoList) {
 		this.produtoList = produtoList;
 	}
-	
-	public CategoriaDTO converterEntidadeParaDTO() {
-		
-		return new CategoriaDTO(idCategoria, nomeCategoria, descricaoCategoria);
-	}
 
+	@Override
+	public String toString() {
+		return "Categoria [idCategoria=" + idCategoria + ", nomeCategoria=" + nomeCategoria + ", descricaoCategoria="
+				+ descricaoCategoria + ", produtoList=" + produtoList + "]";
+	}
+	
+	
+	
 }

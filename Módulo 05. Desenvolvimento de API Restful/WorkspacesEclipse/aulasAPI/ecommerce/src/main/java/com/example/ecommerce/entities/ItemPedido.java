@@ -14,62 +14,38 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name = "item_pedido")
-@JsonIdentityInfo(scope = ItemPedido.class, generator = ObjectIdGenerators.PropertyGenerator.class, property = "idItemPedido")
+@JsonIdentityInfo(scope = ItemPedido.class, generator = ObjectIdGenerators.PropertyGenerator.class, 
+property = "idItemPedido")
 public class ItemPedido {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_item_pedido")
 	private Integer idItemPedido;
-
+	
 	@Column(name = "quantidade")
 	private Integer qtdItemPedido;
-
-	@Column(name = "preco_venda")
-	private Float precoVenda;
-
-	@Column(name = "percentual_desconto")
-	private Float percentualDesconto;
-
-	@Column(name = "valor_bruto")
-	private Float valorBruto;
-
-	@Column(name = "valor_liquido")
-	private Float valorLiquido;
-
-	@ManyToOne
-	@JoinColumn(name = "id_pedido", referencedColumnName = "id_pedido")
-	private Pedido pedido;
-
-	@ManyToOne
-	@JoinColumn(name = "id_produto", referencedColumnName = "id_produto")
-	private Produto produto;
-
-	public ItemPedido(Integer idItemPedido, Integer qtdItemPedido, Float precoVenda, Float percentualDesconto,
-			Float valorBruto, Float valorLiquido, Pedido pedido, Produto produto) {
-		super();
-		this.idItemPedido = idItemPedido;
-		this.qtdItemPedido = qtdItemPedido;
-		this.precoVenda = precoVenda;
-		this.percentualDesconto = percentualDesconto;
-		this.valorBruto = valorBruto;
-		this.valorLiquido = valorLiquido;
-		this.pedido = pedido;
-		this.produto = produto;
-	}
-
-	public ItemPedido() {
-		super();
-	}
-
-	@Override
-	public String toString() {
-		return "ItemPedido [idItemPedido=" + idItemPedido + ", qtdItemPedido=" + qtdItemPedido + ", precoVenda="
-				+ precoVenda + ", percentualDesconto=" + percentualDesconto + ", valorBruto=" + valorBruto
-				+ ", valorLiquido=" + valorLiquido + ", pedido=" + pedido + ", produto=" + produto + "]";
-	}
 	
-
+	@Column(name = "preco_venda")
+	private Double precoVenda;
+	
+	@Column(name = "percentual_desconto")
+	private Double percentualDesconto;
+	
+	@Column(name = "valor_bruto")
+	private Double valorBruto;
+	
+	@Column(name = "valor_liquido")
+	private Double valorLiquido;
+	
+	@ManyToOne
+    @JoinColumn(name = "id_pedido", referencedColumnName = "id_pedido")
+    private Pedido pedido;
+	
+	@ManyToOne
+    @JoinColumn(name = "id_produto", referencedColumnName = "id_produto")
+    private Produto produto;
+	
 	public Integer getIdItemPedido() {
 		return idItemPedido;
 	}
@@ -86,35 +62,35 @@ public class ItemPedido {
 		this.qtdItemPedido = qtdItemPedido;
 	}
 
-	public Float getPrecoVenda() {
+	public Double getPrecoVenda() {
 		return precoVenda;
 	}
 
-	public void setPrecoVenda(Float precoVenda) {
+	public void setPrecoVenda(Double precoVenda) {
 		this.precoVenda = precoVenda;
 	}
 
-	public Float getPercentualDesconto() {
+	public Double getPercentualDesconto() {
 		return percentualDesconto;
 	}
 
-	public void setPercentualDesconto(Float percentualDesconto) {
+	public void setPercentualDesconto(Double percentualDesconto) {
 		this.percentualDesconto = percentualDesconto;
 	}
 
-	public Float getValorBruto() {
-		return valorBruto = this.precoVenda * this.qtdItemPedido;
+	public Double getValorBruto() {
+		return valorBruto;
 	}
 
-	public void setValorBruto(Float valorBruto) {
+	public void setValorBruto(Double valorBruto) {
 		this.valorBruto = valorBruto;
 	}
 
-	public Float getValorLiquido() {
+	public Double getValorLiquido() {
 		return valorLiquido;
 	}
 
-	public void setValorLiquido(Float valorLiquido) {
+	public void setValorLiquido(Double valorLiquido) {
 		this.valorLiquido = valorLiquido;
 	}
 
@@ -134,4 +110,12 @@ public class ItemPedido {
 		this.produto = produto;
 	}
 
+	@Override
+	public String toString() {
+		return "ItemPedido [idItemPedido=" + idItemPedido + ", qtdItemPedido=" + qtdItemPedido + ", precoVenda="
+				+ precoVenda + ", percentualDesconto=" + percentualDesconto + ", valorBruto=" + valorBruto
+				+ ", valorLiquido=" + valorLiquido + ", pedido=" + pedido + ", produto=" + produto + "]";
+	}
+	
+	
 }

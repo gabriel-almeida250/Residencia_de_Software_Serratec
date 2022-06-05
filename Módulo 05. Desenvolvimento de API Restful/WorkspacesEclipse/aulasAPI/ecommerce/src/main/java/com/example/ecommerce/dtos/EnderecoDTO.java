@@ -3,20 +3,22 @@ package com.example.ecommerce.dtos;
 import java.util.List;
 
 import com.example.ecommerce.entities.Endereco;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class EnderecoDTO {
-	
 	private Integer idEndereco;
 
 	private String cep;
 
+	@JsonProperty("logradouro")
 	private String rua;
 
 	private String bairro;
 
+	@JsonProperty("localidade")
 	private String cidade;
 
-	private Integer numero;
+	private String numero;
 
 	private String complemento;
 
@@ -28,7 +30,7 @@ public class EnderecoDTO {
 		super();
 	}
 
-	public EnderecoDTO(Integer idEndereco, String cep, String rua, String bairro, String cidade, Integer numero,
+	public EnderecoDTO(Integer idEndereco, String cep, String rua, String bairro, String cidade, String numero,
 			String complemento, String uf) {
 		super();
 		this.idEndereco = idEndereco;
@@ -39,13 +41,6 @@ public class EnderecoDTO {
 		this.numero = numero;
 		this.complemento = complemento;
 		this.uf = uf;
-	}
-
-	@Override
-	public String toString() {
-		return "EnderecoDTO [idEndereco=" + idEndereco + ", cep=" + cep + ", rua=" + rua + ", bairro=" + bairro
-				+ ", cidade=" + cidade + ", numero=" + numero + ", complemento=" + complemento + ", uf=" + uf
-				+ ", clienteList=" + clienteList + "]";
 	}
 
 	public Integer getIdEndereco() {
@@ -88,11 +83,11 @@ public class EnderecoDTO {
 		this.cidade = cidade;
 	}
 
-	public Integer getNumero() {
+	public String getNumero() {
 		return numero;
 	}
 
-	public void setNumero(Integer numero) {
+	public void setNumero(String numero) {
 		this.numero = numero;
 	}
 
@@ -119,8 +114,10 @@ public class EnderecoDTO {
 	public void setClienteList(List<ClienteDTO> clienteList) {
 		this.clienteList = clienteList;
 	}
-	
-	public Endereco converterDTOparaEntidade() {
-		return new Endereco(idEndereco, cep, rua, bairro, cidade, bairro, complemento, uf);
+
+	public Endereco converterDTOParaEntidade() {
+
+		return new Endereco(idEndereco, cep, rua, bairro, cidade, numero, complemento, uf);
 	}
+
 }

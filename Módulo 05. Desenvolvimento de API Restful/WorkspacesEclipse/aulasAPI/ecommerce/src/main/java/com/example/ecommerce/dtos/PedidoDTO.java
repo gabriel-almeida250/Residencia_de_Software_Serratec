@@ -3,8 +3,6 @@ package com.example.ecommerce.dtos;
 import java.util.Date;
 import java.util.List;
 
-import com.example.ecommerce.entities.Pedido;
-
 public class PedidoDTO {
 
 	private Integer idPedido;
@@ -17,8 +15,16 @@ public class PedidoDTO {
 
 	private Boolean statusPedido;
 
-	List<ItemPedidoDTO> itemPedidosList;
+	private ClienteDTO clienteDTO;
 
+	private Double total;
+
+	private List<ItemPedidoDTO> itemPedidoDTO;
+
+	/*
+	 * @Transient public Integer getNumberOfProducts() { return
+	 * this.listaItemPedido.size(); }
+	 */
 	public PedidoDTO() {
 		super();
 	}
@@ -30,13 +36,6 @@ public class PedidoDTO {
 		this.dataEntrega = dataEntrega;
 		this.dataEnvio = dataEnvio;
 		this.statusPedido = statusPedido;
-	}
-
-	@Override
-	public String toString() {
-		return "PedidoDTO [idPedido=" + idPedido + ", dataPedido=" + dataPedido + ", dataEntrega=" + dataEntrega
-				+ ", dataEnvio=" + dataEnvio + ", statusPedido=" + statusPedido + ", itemPedidosList=" + itemPedidosList
-				+ "]";
 	}
 
 	public Integer getIdPedido() {
@@ -79,15 +78,34 @@ public class PedidoDTO {
 		this.statusPedido = statusPedido;
 	}
 
-	public List<ItemPedidoDTO> getItemPedidosList() {
-		return itemPedidosList;
+	public List<ItemPedidoDTO> getItemPedidoDTO() {
+		return itemPedidoDTO;
 	}
 
-	public void setItemPedidosList(List<ItemPedidoDTO> itemPedidosList) {
-		this.itemPedidosList = itemPedidosList;
+	public void setItemPedidoDTO(List<ItemPedidoDTO> itemPedidoDTO) {
+		this.itemPedidoDTO = itemPedidoDTO;
+	}
+	
+	public ClienteDTO getClienteDTO() {
+		return clienteDTO;
 	}
 
-	public Pedido converterDTOParaEntidade() {
-		return new Pedido(idPedido, dataPedido, dataEntrega, dataEnvio, statusPedido);
+	public void setClienteDTO(ClienteDTO clienteDTO) {
+		this.clienteDTO = clienteDTO;
 	}
+
+	public Double getTotal() {
+		Double soma = 0.0;
+		List<ItemPedidoDTO> itemPedidos = getItemPedidoDTO();
+		for (ItemPedidoDTO op : itemPedidos) {
+			soma += op.getValorLiquido();
+		}
+		total = soma;
+		return total;
+	}
+
+	public void setTotal(Double total) {
+		this.total = total;
+	}
+
 }

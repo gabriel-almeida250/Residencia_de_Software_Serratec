@@ -1,10 +1,8 @@
 package com.example.ecommerce.dtos;
 
 import java.util.Date;
-import java.util.List;
 
 public class ProdutoDTO {
-
 	private Integer idProduto;
 
 	private String nomeProduto;
@@ -19,28 +17,7 @@ public class ProdutoDTO {
 
 	private String imagemProduto;
 
-	private CategoriaDTO categoria;
-
-	List<ItemPedidoDTO> itemPedidosList;
-
-	public ProdutoDTO() {
-		super();
-	}
-
-	public ProdutoDTO(Integer idProduto, String nomeProduto, String descricaoProduto, Integer qtdEstoque,
-			Date dataCadastro, Double valorUnitario, String imagemProduto, CategoriaDTO categoria,
-			List<ItemPedidoDTO> itemPedidosList) {
-		super();
-		this.idProduto = idProduto;
-		this.nomeProduto = nomeProduto;
-		this.descricaoProduto = descricaoProduto;
-		this.qtdEstoque = qtdEstoque;
-		this.dataCadastro = dataCadastro;
-		this.valorUnitario = valorUnitario;
-		this.imagemProduto = imagemProduto;
-		this.categoria = categoria;
-		this.itemPedidosList = itemPedidosList;
-	}
+	private CategoriaDTO categoriaDTO;
 
 	public Integer getIdProduto() {
 		return idProduto;
@@ -98,20 +75,20 @@ public class ProdutoDTO {
 		this.imagemProduto = imagemProduto;
 	}
 
-	public CategoriaDTO getCategoria() {
-		return categoria;
+	public CategoriaDTO getCategoriaDTO() {
+		return categoriaDTO;
 	}
 
-	public void setCategoria(CategoriaDTO categoria) {
-		this.categoria = categoria;
+	public void setCategoriaDTO(CategoriaDTO categoriaDTO) {
+		this.categoriaDTO = categoriaDTO;
 	}
 
-	public List<ItemPedidoDTO> getItemPedidosList() {
-		return itemPedidosList;
-	}
-
-	public void setItemPedidosList(List<ItemPedidoDTO> itemPedidosList) {
-		this.itemPedidosList = itemPedidosList;
+	@Override
+	public String toString() {
+		return "ProdutoDTO [idProduto=" + idProduto + ", nomeProduto=" + nomeProduto + ", descricaoProduto="
+				+ descricaoProduto + ", qtdEstoque=" + qtdEstoque + ", dataCadastro=" + dataCadastro
+				+ ", valorUnitario=" + valorUnitario + ", imagemProduto=" + imagemProduto + ", categoriaDTO="
+				+ categoriaDTO + "]";
 	}
 
 }

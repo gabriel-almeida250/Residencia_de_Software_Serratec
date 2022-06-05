@@ -2,8 +2,6 @@ package com.example.ecommerce.dtos;
 
 import java.util.List;
 
-import com.example.ecommerce.entities.Categoria;
-
 public class CategoriaDTO {
 	
 	private Integer idCategoria;
@@ -13,23 +11,6 @@ public class CategoriaDTO {
 	private String descricaoCategoria;
 
 	private List<ProdutoDTO> produtoList;
-
-	public CategoriaDTO() {
-		super();
-	}
-
-	public CategoriaDTO(Integer idCategoria, String nomeCategoria, String descricaoCategoria) {
-		super();
-		this.idCategoria = idCategoria;
-		this.nomeCategoria = nomeCategoria;
-		this.descricaoCategoria = descricaoCategoria;
-	}
-
-	@Override
-	public String toString() {
-		return "CategoriaDTO [idCategoria=" + idCategoria + ", nomeCategoria=" + nomeCategoria + ", descricaoCategoria="
-				+ descricaoCategoria + ", produtoList=" + produtoList + "]";
-	}
 
 	public Integer getIdCategoria() {
 		return idCategoria;
@@ -63,9 +44,5 @@ public class CategoriaDTO {
 		this.produtoList = produtoList;
 	}
 	
-	public Categoria converterDTOParaEntidade() {
-		
-		return new Categoria(idCategoria, nomeCategoria, descricaoCategoria);
-	}
 	
 }

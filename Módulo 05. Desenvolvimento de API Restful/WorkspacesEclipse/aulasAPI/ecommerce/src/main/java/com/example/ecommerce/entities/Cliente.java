@@ -1,5 +1,7 @@
 package com.example.ecommerce.entities;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,13 +9,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.hibernate.validator.constraints.br.CPF;
 
-import com.example.ecommerce.dtos.ClienteDTO;
-import com.example.ecommerce.dtos.EnderecoDTO;
-import com.example.ecommerce.services.EnderecoService;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
@@ -28,44 +31,30 @@ public class Cliente {
 	@Column(name = "id_cliente")
 	private Integer idCliente;
 	
+	@Email(message = "E-mail inválido")
+	@NotBlank(message="E-mail não pode estar em branco.")
 	@Column(name = "email")
 	private String emailCliente;
 	
 	@Column(name = "nome_completo")
+	@NotBlank(message= "O nome não pode estar em branco")
 	private String nomeCliente;
 	
+	@CPF(message = "CPF inválido.")
+	@NotBlank(message="CPF não pode estar vazio.")
 	@Column(name = "cpf")
 	private String cpfCliente;
 	
+	@Size(min=11, max=15, message="O telefone deve ter entre 11 e 15 caracteres.")
 	@Column(name = "telefone")
 	private String telefoneCliente;
+	
+	@OneToMany(mappedBy="cliente")
+	private List<Pedido> listaPedido;
 	
 	@ManyToOne
     @JoinColumn(name = "id_endereco", referencedColumnName = "id_endereco")
     private Endereco endereco;
-	
-
-	public Cliente() {
-		super();
-	}
-
-	public Cliente(Integer idCliente, String emailCliente, String nomeCliente, String cpfCliente,
-			String telefoneCliente, Endereco endereco) {
-		super();
-		this.idCliente = idCliente;
-		this.emailCliente = emailCliente;
-		this.nomeCliente = nomeCliente;
-		this.cpfCliente = cpfCliente;
-		this.telefoneCliente = telefoneCliente;
-		this.endereco = endereco;
-	}
-
-	@Override
-	public String toString() {
-		return "Cliente [idCliente=" + idCliente + ", emailCliente=" + emailCliente + ", nomeCliente=" + nomeCliente
-				+ ", cpfCliente=" + cpfCliente + ", telefoneCliente=" + telefoneCliente + ", endereco=" + endereco
-				+ "]";
-	}
 
 	public Integer getIdCliente() {
 		return idCliente;
@@ -115,12 +104,21 @@ public class Cliente {
 		this.endereco = endereco;
 	}
 	
-	@Autowired
-	EnderecoService enderecoService;
 	
-	public ClienteDTO converterEntidadeparaDTO() {
-		ClienteDTO clienteDTO = new ClienteDTO();
-		EnderecoDTO enderecoDTO = enderecoService.findEnderecoDTOById(clienteDTO.getEndereco().getIdEndereco());
-		return new ClienteDTO(idCliente, emailCliente, nomeCliente, cpfCliente, telefoneCliente, enderecoDTO);
+
+	public List<Pedido> getListaPedido() {
+		return listaPedido;
 	}
+
+	public void setListaPedido(List<Pedido> listaPedido) {
+		this.listaPedido = listaPedido;
+	}
+
+	@Override
+	public String toString() {
+		return "Cliente [idCliente=" + idCliente + ", emailCliente=" + emailCliente + ", nomeCliente=" + nomeCliente
+				+ ", cpfCliente=" + cpfCliente + ", telefoneCliente=" + telefoneCliente + ", endereco=" + endereco
+				+ "]";
+	}
+	
 }

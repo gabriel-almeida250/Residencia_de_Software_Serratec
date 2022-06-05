@@ -9,9 +9,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 import com.example.ecommerce.dtos.EnderecoDTO;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
@@ -19,30 +21,32 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 @JsonIdentityInfo(scope = Endereco.class, generator = ObjectIdGenerators.PropertyGenerator.class, property = "idEndereco")
 public class Endereco {
 
-	// id_endereco SERIAL PRIMARY KEY,
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_endereco")
 	private Integer idEndereco;
-	// cep varchar(9) NOT NULL,
+
+	@NotBlank(message="Insira um CEP")
 	@Column(name = "cep")
 	private String cep;
-	// rua varchar(100) NOT NULL,
+
+	@JsonProperty("logradouro")
 	@Column(name = "rua")
 	private String rua;
-	// bairro varchar(50) NOT NULL,
+
 	@Column(name = "bairro")
 	private String bairro;
-	// cidade varchar(30),
+
+	@JsonProperty("localidade")
 	@Column(name = "cidade")
 	private String cidade;
-	// numero INTEGER NOT NULL,
+
 	@Column(name = "numero")
 	private String numero;
-	// complemento varchar(20),
+
 	@Column(name = "complemento")
 	private String complemento;
-	// uf varchar(2)
+
 	@Column(name = "uf")
 	private String uf;
 
@@ -64,13 +68,6 @@ public class Endereco {
 		this.numero = numero;
 		this.complemento = complemento;
 		this.uf = uf;
-	}
-
-	@Override
-	public String toString() {
-		return "Endereco [idEndereco=" + idEndereco + ", cep=" + cep + ", rua=" + rua + ", bairro=" + bairro
-				+ ", cidade=" + cidade + ", numero=" + numero + ", complemento=" + complemento + ", uf=" + uf
-				+ ", clienteList=" + clienteList + "]";
 	}
 
 	public Integer getIdEndereco() {
@@ -136,8 +133,25 @@ public class Endereco {
 	public void setUf(String uf) {
 		this.uf = uf;
 	}
-	
-	public EnderecoDTO converterEntidadeParaDTO() {
-		return new EnderecoDTO(idEndereco, cep, rua, bairro, cidade, idEndereco, complemento, uf);
+
+	public List<Cliente> getClienteList() {
+		return clienteList;
 	}
+
+	public void setClienteList(List<Cliente> clienteList) {
+		this.clienteList = clienteList;
+	}
+
+	@Override
+	public String toString() {
+		return "Endereco [idEndereco=" + idEndereco + ", cep=" + cep + ", rua=" + rua + ", bairro=" + bairro
+				+ ", cidade=" + cidade + ", numero=" + numero + ", complemento=" + complemento + ", uf=" + uf
+				+ ", clienteList=" + clienteList + "]";
+	}
+
+	public EnderecoDTO converterEntidadeParaDTO() {
+
+		return new EnderecoDTO(idEndereco, cep, rua, bairro, cidade, numero, complemento, uf);
+	}
+
 }

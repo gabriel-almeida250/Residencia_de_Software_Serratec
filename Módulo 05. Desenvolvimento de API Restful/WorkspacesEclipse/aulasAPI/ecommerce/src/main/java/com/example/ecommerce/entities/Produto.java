@@ -1,7 +1,6 @@
 package com.example.ecommerce.entities;
 
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,7 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
@@ -39,7 +37,7 @@ public class Produto {
 	private Date dataCadastro;
 
 	@Column(name = "valor_unitario")
-	private Float valorUnitario;
+	private Double valorUnitario;
 
 	@Column(name = "imagem")
 	private String imagemProduto;
@@ -47,28 +45,6 @@ public class Produto {
 	@ManyToOne
 	@JoinColumn(name = "id_categoria", referencedColumnName = "id_categoria")
 	private Categoria categoria;
-
-	@OneToMany(mappedBy = "produto")
-	List<ItemPedido> itemPedidosList;
-
-	public Produto(Integer idProduto, String nomeProduto, String descricaoProduto, Integer qtdEstoque,
-			Date dataCadastro, Float valorUnitario, String imagemProduto, Categoria categoria,
-			List<ItemPedido> itemPedidosList) {
-		super();
-		this.idProduto = idProduto;
-		this.nomeProduto = nomeProduto;
-		this.descricaoProduto = descricaoProduto;
-		this.qtdEstoque = qtdEstoque;
-		this.dataCadastro = dataCadastro;
-		this.valorUnitario = valorUnitario;
-		this.imagemProduto = imagemProduto;
-		this.categoria = categoria;
-		this.itemPedidosList = itemPedidosList;
-	}
-
-	public Produto() {
-		super();
-	}
 
 	public Integer getIdProduto() {
 		return idProduto;
@@ -110,11 +86,11 @@ public class Produto {
 		this.dataCadastro = dataCadastro;
 	}
 
-	public Float getValorUnitario() {
+	public Double getValorUnitario() {
 		return valorUnitario;
 	}
 
-	public void setValorUnitario(Float valorUnitario) {
+	public void setValorUnitario(Double valorUnitario) {
 		this.valorUnitario = valorUnitario;
 	}
 
@@ -134,12 +110,12 @@ public class Produto {
 		this.categoria = categoria;
 	}
 
-	public List<ItemPedido> getItemPedidosList() {
-		return itemPedidosList;
-	}
-
-	public void setItemPedidosList(List<ItemPedido> itemPedidosList) {
-		this.itemPedidosList = itemPedidosList;
+	@Override
+	public String toString() {
+		return "Produto [idProduto=" + idProduto + ", nomeProduto=" + nomeProduto + ", descricaoProduto="
+				+ descricaoProduto + ", qtdEstoque=" + qtdEstoque + ", dataCadastro=" + dataCadastro
+				+ ", valorUnitario=" + valorUnitario + ", imagemProduto=" + imagemProduto + ", categoria=" + categoria
+				+ "]";
 	}
 
 }

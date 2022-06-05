@@ -8,9 +8,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 import com.example.ecommerce.dtos.PedidoDTO;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
@@ -38,42 +39,34 @@ public class Pedido {
 	@Column(name = "status")
 	private Boolean statusPedido;
 
-	@OneToMany(mappedBy = "pedido")
-	List<ItemPedido> itemPedidosList;
+	@ManyToOne
+    @JoinColumn(name = "id_cliente", referencedColumnName = "id_cliente")
+	private Cliente cliente;
 	
-	@Transient
-    public Float getTotalItemPedidos() {
-        Float soma = 0f;
-        List<ItemPedido> itemPedidos = getItemPedidosList();
-        for (ItemPedido op : itemPedidos) {
-            soma += op.getValorLiquido();
-        }
-        return soma;
-    }
+	@OneToMany(mappedBy = "pedido")
+	private List<ItemPedido> listaItemPedido;
+    
+	public Pedido() {
+		super();
+	}
 
-    @Transient
-    public Integer getNumberOfProducts() {
-        return this.itemPedidosList.size();
-    }
-
-	public Pedido(Integer idPedido, Date dataPedido, Date dataEntrega, Date dataEnvio, Boolean statusPedido) {
+	public Pedido(Integer idPedido, Date dataPedido, Date dataEntrega, Date dataEnvio, Boolean statusPedido,
+			List<ItemPedido> listaItemPedido) {
 		super();
 		this.idPedido = idPedido;
 		this.dataPedido = dataPedido;
 		this.dataEntrega = dataEntrega;
 		this.dataEnvio = dataEnvio;
 		this.statusPedido = statusPedido;
+		this.listaItemPedido = listaItemPedido;
 	}
 
-	public Pedido() {
-		super();
+	public List<ItemPedido> getListaItemPedido() {
+		return listaItemPedido;
 	}
 
-	@Override
-	public String toString() {
-		return "Pedido [idPedido=" + idPedido + ", dataPedido=" + dataPedido + ", dataEntrega=" + dataEntrega
-				+ ", dataEnvio=" + dataEnvio + ", statusPedido=" + statusPedido + ", itemPedidosList=" + itemPedidosList
-				+ "]";
+	public void setListaItemPedido(List<ItemPedido> listaItemPedido) {
+		this.listaItemPedido = listaItemPedido;
 	}
 
 	public Integer getIdPedido() {
@@ -116,15 +109,22 @@ public class Pedido {
 		this.statusPedido = statusPedido;
 	}
 
-	public List<ItemPedido> getItemPedidosList() {
-		return itemPedidosList;
+	public Cliente getCliente() {
+		return cliente;
 	}
 
-	public void setItemPedidosList(List<ItemPedido> itemPedidosList) {
-		this.itemPedidosList = itemPedidosList;
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
 
+	@Override
+	public String toString() {
+		return "Pedido [idPedido=" + idPedido + ", dataPedido=" + dataPedido + ", dataEntrega=" + dataEntrega
+				+ ", dataEnvio=" + dataEnvio + ", statusPedido=" + statusPedido + "]";
+	}
+	
 	public PedidoDTO converterEntidadeParaDTO() {
 		return new PedidoDTO(idPedido, dataPedido, dataEntrega, dataEnvio, statusPedido);
 	}
+
 }

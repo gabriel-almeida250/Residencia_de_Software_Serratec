@@ -6,13 +6,13 @@ public class ItemPedidoDTO {
 
 	private Integer qtdItemPedido;
 
-	private Float precoVenda;
+	private Double precoVenda;
 
-	private Float percentualDesconto;
+	private Double percentualDesconto;
 
-	private Float valorBruto;
+	private Double valorBruto;
 
-	private Float valorLiquido;
+	private Double valorLiquido;
 
 	private PedidoDTO pedido;
 
@@ -34,36 +34,35 @@ public class ItemPedidoDTO {
 		this.qtdItemPedido = qtdItemPedido;
 	}
 
-	public Float getPrecoVenda() {
+	public Double getPrecoVenda() {
 		return precoVenda;
 	}
 
-	public void setPrecoVenda(Float precoVenda) {
+	public void setPrecoVenda(Double precoVenda) {
 		this.precoVenda = precoVenda;
 	}
 
-	public Float getPercentualDesconto() {
+	public Double getPercentualDesconto() {
 		return percentualDesconto;
 	}
 
-	public void setPercentualDesconto(Float percentualDesconto) {
+	public void setPercentualDesconto(Double percentualDesconto) {
 		this.percentualDesconto = percentualDesconto;
 	}
 
-	public Float getValorBruto() {
-		
+	public Double getValorBruto() {
 		return valorBruto;
 	}
 
-	public void setValorBruto(Float valorBruto) {
+	public void setValorBruto(Double valorBruto) {
 		this.valorBruto = valorBruto;
 	}
 
-	public Float getValorLiquido() {
+	public Double getValorLiquido() {
 		return valorLiquido;
 	}
 
-	public void setValorLiquido(Float valorLiquido) {
+	public void setValorLiquido(Double valorLiquido) {
 		this.valorLiquido = valorLiquido;
 	}
 
