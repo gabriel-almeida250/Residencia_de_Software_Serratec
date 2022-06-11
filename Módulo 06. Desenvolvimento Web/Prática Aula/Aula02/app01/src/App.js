@@ -12,14 +12,40 @@
 // }
 // export default App;
 
+//Aula 2
+// import React from "react";
+// import {Input} from "./Pages/Input";
+
+// function App () {
+//   return (
+//     <>
+//       <Input/>
+//     </>
+//   );
+// }
+import { BrowserRouter } from "react-router-dom";
 import React from "react";
-import {Input} from "./Pages/Input";
+import {ComponentePai} from "./Pages2/ComponentePai";
 
 function App () {
+
   return (
     <>
-      <Input/>
+    <ComponentePai/>
     </>
-  );
+  )
 }
+
 export default App;
+// import {ComponentePai} from "./Pages2/ComponentePai";
+
+// function App () {
+
+//  return (
+//    <>
+//     <ComponentePai/>
+//     </>
+//  )
+// }
+
+// export default App;
