@@ -23,29 +23,32 @@
 //     </>
 //   );
 // }
-import { BrowserRouter } from "react-router-dom";
-import React from "react";
-import {ComponentePai} from "./Pages2/ComponentePai";
-
-function App () {
-
-  return (
-    <>
-    <ComponentePai/>
-    </>
-  )
-}
-
-export default App;
+//Aula 3 10/06/2022
+// import { BrowserRouter } from "react-router-dom";
+// import React from "react";
 // import {ComponentePai} from "./Pages2/ComponentePai";
 
 // function App () {
 
-//  return (
-//    <>
+//   return (
+//     <>
 //     <ComponentePai/>
 //     </>
-//  )
+//   )
 // }
+//Aula 3 Adicionando elementos a uma Array
+import React,{useState, useEffect} from "react";
+import { AdicionarLista } from "./Pages/AdicionarLista";
 
-// export default App;
+function App() {
+
+
+  return (
+    <>
+      <AdicionarLista/>
+    </>
+  );
+}
+
+export default App;
+//Aula 3 10/06/2022
