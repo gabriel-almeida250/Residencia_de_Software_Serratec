@@ -37,15 +37,31 @@
 //   )
 // }
 //Aula 3 Adicionando elementos a uma Array
+// import React,{useState, useEffect} from "react";
+// import { AdicionarLista } from "./Pages/AdicionarLista";
+
+// function App() {
+
+
+//   return (
+//     <>
+//       <AdicionarLista/>
+//     </>
+//   );
+// }
+
+// export default App;
+
+//Aula 4
 import React,{useState, useEffect} from "react";
-import { AdicionarLista } from "./Pages/AdicionarLista";
+import { Root } from "./Routes/Root";
 
 function App() {
 
 
   return (
     <>
-      <AdicionarLista/>
+      <Root/>
     </>
   );
 }
