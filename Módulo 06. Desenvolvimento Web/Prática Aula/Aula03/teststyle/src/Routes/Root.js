@@ -1,17 +1,15 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { AdicionarLista } from "../Pages/Aula03/ListaDeCompras/AdicionarLista";
-
-import { Cards } from "../Pages/Aula04/Exercicio/Cards/Index";
-import { Home } from "../Pages/Aula04/Exercicio/Home/Index";
-import { NotFound } from"../Pages/Aula04/Exercicio/NotFound/Index";
+import { AdicionarLista } from "../ListaDeCompras/AdicionarLista";
+import { Home } from "../Home/Index";
 
 export const Root = () => {
     return (
         <>
             <BrowserRouter>
                 <Routes>
-                    <Route path="/" element={<AdicionarLista/>} />
+                    <Route path="/" element={<Home />} />
+                    <Route path="/addLista/:nome" element={<AdicionarLista/>} />
                 </Routes>
             </BrowserRouter>
             {/* <BrowserRouter>

@@ -14,7 +14,9 @@ export const AdicionarLista = () =>{
 
     return(
         <>
+        <div>
             <input type="text" value={item} onChange={e => setItem(e.target.value)}/>
+        </div>
             <button onClick={handleAdd}>Adicionar</button>
             <div>
                 <ListaDeCompras lista={lista}/>
